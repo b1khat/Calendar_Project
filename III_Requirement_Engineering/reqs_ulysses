@@ -1,0 +1,20 @@
+Events need options to repeat daily, weekly, monthly, yearly.
+Events need options to repeat at any given increment (x hours, x days, x months, etc)
+When events are in conflict, an option to overlap the events must be presented.
+When events are in conflict, an option to choose 1 and delete the other must be presented.
+When events are in conflict, an option to choose 1 and alter the start/end time of the other must be presented.
+Overlapping events must have a clear graphical representation in the GUI.
+There must be a GUI pane that contains all options.
+There must be options for modifying event category colors.
+There must be an option for an event to be prioritized.
+Prioritized events will appear instead of other events when space is limited (as in weekly/monthly view).
+Event name length must be limited.
+Event name length must be at least 1 (non-space, non null) character.
+Event locations should be an optional field.
+Event description size must also be limited and optional.
+For color options, a wheel or RGB scrolls should be presented for specifying the color.
+Events must be able to span multiple days.
+When an event spans multiple days, the start on one day must not have the same graphical representation as when it 
+    continues the following day.
+When an event spans multiple days, the end on one day must not have same graphical representation as when it is cut
+    off by the ending of the previous day.
