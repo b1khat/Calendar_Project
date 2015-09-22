@@ -14,7 +14,7 @@ Event locations should be an optional field.
 Event description size must also be limited and optional.
 For color options, a wheel or RGB scrolls should be presented for specifying the color.
 Events must be able to span multiple days.
-When an event spans multiple days, the start on one day must not have the same graphical representation as when it 
+When an event spans multiple days, the start on one day must not have the same graphical representation as when it
     continues the following day.
 When an event spans multiple days, the end on one day must not have same graphical representation as when it is cut
     off by the ending of the previous day.
