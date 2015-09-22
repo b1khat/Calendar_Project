@@ -1,0 +1,14 @@
+1)	User should be able to view his/her saved calendar
+2)	User should be able to view monthly, weekly, and daily views of the calendar
+3)	When creating an event user should provide name, time, and location. Also if it is a meeting then the user should also be able to specify other attendees
+4)	User should be able to add/delete/edit an event - confirmation should always be asked
+5)	User changes should be reciprocated on the calendar
+6)	User can colour mark the events – choose colour from colour palette
+7)	User should be clearly able to view overlapping events properly
+8)	User should be able to categorize events
+9)	User should be able to view individual events
+10)	User should be able to view events from other months
+11)	User should be able to set up weekly or monthly events
+12)	User should be able to set reminders
+13)	User should be able to zoom in and zoom out at any given point of time
+14)	Holidays and weekends should be special coloured
