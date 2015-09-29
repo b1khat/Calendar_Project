@@ -10,19 +10,20 @@ Requirement
 
 
 #### 1.1 default view
-#####1.1.1		The user should be able to set their default view to daily,weekly or monthly.
-#####1.1.2		The system display the default view when the application is launched. 
+#####1.1.1	The user should be able to set their default view to daily,weekly or monthly.
+#####1.1.2	The system display the default view when the application is launched. 
 
 #### 1.2 Weekly View
-#####1.2.1		The user should be able to select year and month for viewing of the events of the month.
-#####1.2.2		The user should be able to view all the events of the week .
-#####1.2.3		The events are indicated by filling the day with the color of the category the event belongs to.
-#####1.2.4              If the events in the same day belong to different categories, then split the cell and fill the color evenly.
+#####1.2.1	The user should be able to select year and month for viewing of the events of the month.
+#####1.2.2	The user should be able to view all the events of the week .
+#####1.2.3	The events are indicated by filling the day with the color of the category the event belongs to.
+#####1.2.4      If the events in the same day belong to different categories, then split the cell and fill the color evenly.
 
 ####1.3	Daily View
 #####1.3.1	The user should be able to view all the events of the selected day.
 #####1.3.2	The user should be able to sort the events of the selected day by starting time sequence.	
-#####1.3.3	The user should be able to add/modify/delete the events at the Daily view layer.
+#####1.3.3	The user should be able to add the events at the Daily/Weekly/Monthly view layer.
+#####1.3.4	The user should be able to modify/delete events at daily view layer only.
 
 ####1.4	Monthly View
 #####1.4.1      The user should be able to select year for view the month.
@@ -47,10 +48,11 @@ Requirement
 #####2.1.7	Every event belongs to a category and display the color of the category.
 #####2.1.8	The user should be able to use the predefined categories or set up their owns.
 #####2.1.9	The time conflicts notify will be popped up once there is a time conflict.
-#####2.1.10     The conflicting events could co-exist, however, there are marked separately on the daily view.
-#####2.1.10	The conflicting events on the daily view are illustrated as parallel rectangles.  
-#####2.1.11           The user can add/modify/remove event into or out of category
-#####2.1.11	A category cannot be deleted if there are still events belong to it.
+#####2.1.10	The user should be able to choose discard the current event or continue with co-exist events by choosing discard or continue bottom.
+#####2.1.11     The conflicting events could co-exist, however, there are marked separately on the daily view.
+#####2.1.12	The conflicting events on the daily view are illustrated as parallel rectangles.  
+#####2.1.13     The user can add/modify/remove event into or out of category
+#####2.1.14	A category cannot be deleted if there are still events belong to it.
 
 #### 2.1 Add Event
 #####2.1.1	The user can add event in the daily view layer.
