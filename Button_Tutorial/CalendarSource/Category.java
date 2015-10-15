@@ -1,14 +1,22 @@
+/*addEvent still needs conflict management
+ *or should it be implemented in another class?
+ *
+ *
+ **/
+
 import static java.lang.System.*;
-import java.awt.Color;
-import java.util.*;//for arraylists
+import java.awt.Color;	//possible use for Colorspaces (conversions from input tool, probs overkill)
 
 public class Category{
 
 	String name; //CategoryID?
 	Color color;//could change to r,g,b, and maybe a(alpha)
 				//need to define the default color
-	ArrayList<Event> eventList = new ArrayList<Event>();
 
+	public Category(){
+		name = null;	//redundant?
+		//Color = ?
+	}
 	public Category(String name){
 		this.name = name;
 		//requires default color to be defined
@@ -18,14 +26,22 @@ public class Category{
 		this.color = color;
 	}
 
-	public void addEvent(Event newEvent){
-		eventList.add(newEvent);
+	public String toString(){
+		return "Category Name:\t" + name +
+			"\nCategory Color:\t" + color;
 	}
 
-	public void removeEvent(Event delEvent){ //Event to be deleted
-		//probably best to change it to just the name for faster searching
-		//unless it goes by memory address
-		//search for delEvent in eventList, then remove
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setColor(Color color){
+		this.color = color;
 	}
 
-}
+	public String getName(){
+		return name;
+	}
+	public Color getColor(){
+		return color;
+	}
+}//end Category class
