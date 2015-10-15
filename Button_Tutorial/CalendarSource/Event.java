@@ -5,33 +5,39 @@ public class Event{
 	private
 		String name,
 		location,
-		description;	//add categoryID
+		description;
 
 	private Date 	startTime,
 					endTime;
 
-	public Event(){	//default constructor
+	private Category category;
+
+	public Event(){	//default constructor needs protection against referencing made to objects with null attributes
 		name = null;	// "" ?
 		location = null;
 		description = null;
 		startTime = null;
 		endTime = null;
+		//category = ??
 	}
-	public Event(String newName, Date startTime, Date endTime){
+	public Event(String newName, Date startTime, Date endTime, Category cat){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		category = cat;
 	}
-	public Event(String newName, Date startTime, Date endTime, String newLocation){
+	public Event(String newName, Date startTime, Date endTime, Category cat, String newLocation){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		category = cat;
 		location = newLocation;
 	}
-	public Event(String newName, Date startTime, Date endTime, String newLocation, String newDescription){
+	public Event(String newName, Date startTime, Date endTime, Category cat, String newLocation, String newDescription){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		category = cat;
 		location = newLocation;
 		description = newDescription;
 	}
@@ -41,7 +47,8 @@ public class Event{
 				"\nStart:\t" + startTime +
 				"\nEnd:  \t" + endTime +
 				"\nLocation: \t\t" + location +
-				"\nDescription: \t" + description;
+				"\nDescription: \t" + description +
+				"\n" + category;
 	}
 
 	public void setName(String newName){
@@ -62,11 +69,14 @@ public class Event{
 	public void setEndTime(int year, int month, int day, int hour, int minute){
 		endTime = new Date(year-1900, month, day, hour, minute);
 	}
+	public void setCategory(Category cat){
+		category = cat;
+	}
 
 	public String getName(){
-		if(name!=null && !name.isEmpty())
+	//	if(name!=null && !name.isEmpty())
 			return name;
-		return "NO SET NAME ERROR";	//can change to exception
+	//	return "NO SET NAME ERROR";	//can change to exception
 	}
 	public String getLocation(){
 		if(location!=null && !location.isEmpty())
@@ -84,5 +94,8 @@ public class Event{
 	public Date	getEndTime(){
 		return endTime;
 	}
+	public Category getCategory(){
+		return category;
+	}
 
-}
+}//end Event class
