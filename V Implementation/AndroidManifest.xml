@@ -6,9 +6,10 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="23" />
 
     <application
+        android:name=".Globals"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -26,6 +27,8 @@
             android:name=".DailyViewActivity"
             android:label="Daily View"
         />
+        
     </application>
+
 
 </manifest>
