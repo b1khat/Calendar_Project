@@ -12,7 +12,7 @@ import java.util.*;//for arraylists
 
 
 public class EventManager{			//does this need to be all static?
-
+	
 	private static ArrayList<Event> eventList = new ArrayList<Event>();
 	private static ArrayList<Category> categoryList =  new ArrayList<Category>();	//collection?
 
@@ -64,6 +64,8 @@ public class EventManager{			//does this need to be all static?
 	public static void removeAllInstancesOfEvent(Event delEvent){
 		/**Traverse the list, deleting any event that matches @Param's attributes (except for start/end time ? see comment in removeEvent)
 		 	Look into  removeAll(Collection<?> c)
+		 	any cryptic checks in java?
+			
 		 */
 
 	}
@@ -77,9 +79,9 @@ public class EventManager{			//does this need to be all static?
 		//check for events in this category still existing, prompt change
 		/*
 		 for(Event e: eventList){
-		 		if(e.getCategory() == category){ //or e.getCategory.getName() = category.getName()
+		 		if(e.getCategory() == category){ //or e.getCategory.getName() = category.getName() //or .isEqual()? .compareTo()==0?
 
-		 			prompt user to reassign e to a new category
+		 			prompt user to reassign e to a new category? or option to dump all events into another category
 
 		 			e.setCategory(user's choice from existing categories);
 		 		}
@@ -91,6 +93,30 @@ public class EventManager{			//does this need to be all static?
 	}
 
 	public static ArrayList<Event> getEvents(){	//PROBABLY ONLY FOR TESTING/DEBUGGING
-		return eventList;
+		return eventList;//agenda view
+	}
+
+	public static ArrayList<Event> getEvents(Date startPeriod, Date endPeriod){
+		ArrayList<Event> eventsInPeriod = new ArrayList<Event>();
+
+		//Search through events list and find the events that start
+		//in between startPeriod and endPeriod
+		Date startTime; //, endTime;
+		for(Event e: eventList){
+			startTime = e.getStartTime();
+			//endTime = e.getEndTime();
+			if( startTime.compareTo(startPeriod) >= 0 ){	//event starts after the period begins (or at the exact moment)
+				out.println("YOU GOT HERE LAYER 1");	//if( endTime.compareTo(startPeriod) < )  //If we have extra time, add an option in settings to show events that started on days prior
+				if( startTime.compareTo(endPeriod) < 0 ){	//event starts before the period ends
+					out.println("YOU GOT HERE LAYER 2");
+					eventsInPeriod.add(e);
+				}
+			}
+		}
+		return eventsInPeriod;
+	}
+	
+	public static ArrayList<Category> getCategories(){
+		return categoryList;
 	}
 }

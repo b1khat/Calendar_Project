@@ -1,6 +1,8 @@
 package com.example.calendar;
 
+import java.util.Calendar;
 import java.util.Date;	//deprecated! TimeStamp, Calendar, GregorianCalendar, Time
+import java.util.GregorianCalendar;
 
 public class Event{
 
@@ -9,11 +11,16 @@ public class Event{
 		location,
 		description;
 
-	private Date 	startTime,
-					endTime;
+//	private Date 	startTime,
+	//				endTime;
+
+	private GregorianCalendar 	startTime,
+								endTime;	//does this need to be Calendar for typecasting?
 
 	private Category category;
 
+	/*Pre-Condition for constructors:	startTime is actually before the endTime!
+	 **/
 	public Event(){	//default constructor needs protection against referencing made to objects with null attributes?
 		name = null;	// "" ?
 		location = null;
@@ -22,20 +29,20 @@ public class Event{
 		endTime = null;
 		//category = ?? define default category
 	}
-	public Event(String newName, Date startTime, Date endTime, Category cat){
+	public Event(String newName, GregorianCalendar startTime, GregorianCalendar endTime, Category cat){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		category = cat;
 	}
-	public Event(String newName, Date startTime, Date endTime, Category cat, String newLocation){
+	public Event(String newName, GregorianCalendar startTime, GregorianCalendar endTime, Category cat, String newLocation){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		category = cat;
 		location = newLocation;
 	}
-	public Event(String newName, Date startTime, Date endTime, Category cat, String newLocation, String newDescription){
+	public Event(String newName, GregorianCalendar startTime, GregorianCalendar endTime, Category cat, String newLocation, String newDescription){
 		name = newName;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -46,8 +53,8 @@ public class Event{
 
 	public String toString(){
 		return 	"Name: " + name +
-				"\nStart:\t" + startTime +
-				"\nEnd:  \t" + endTime +
+				"\nStart:\t" + startTime.getTime() +
+				"\nEnd:  \t" + endTime.getTime() +
 				"\n" + category +
 				"\nLocation: \t\t" + location +
 				"\nDescription: \t" + description;
@@ -66,10 +73,10 @@ public class Event{
 		description = newDescription;
 	}
 	public void setStartTime(int year, int month, int day, int hour, int minute){	//perhaps change this to setStartTime(Date newStartTime)
-		startTime = new Date(year-1900, month, day, hour, minute);	//the year minus 1900 (the start year from Date API)
+		startTime = new GregorianCalendar(year-1970, month, day, hour, minute);	//the year minus 1970 (the start year from Date API)
 	}
 	public void setEndTime(int year, int month, int day, int hour, int minute){
-		endTime = new Date(year-1900, month, day, hour, minute);
+		endTime = new GregorianCalendar(year-1970, month, day, hour, minute);
 	}
 	public void setCategory(Category cat){
 		category = cat;
@@ -90,11 +97,12 @@ public class Event{
 			return description;
 		return "NO SET DESCRIPTION ERROR";	//can change to exception
 	}
-	public Date	getStartTime(){
-		return startTime;	//Date API returns null and "null" if toString
+
+	public Date getStartTime(){
+		return startTime.getTime();	//Calendar API? //Date API returns null and "null" if toString
 	}
-	public Date	getEndTime(){
-		return endTime;
+	public Date getEndTime(){
+		return endTime.getTime();	//Calendar.getTime() returns a Date object
 	}
 	public Category getCategory(){
 		return category;

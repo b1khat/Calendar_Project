@@ -5,25 +5,24 @@
  **/
 package com.example.calendar;
 
-import static java.lang.System.*;
-import android.graphics.Color; //COLORS ARE REFERENCES TO RES FOLDER, NOT DYNAMICALLY ASSIGNABLE, java.awt.Color off limits,
+//import static java.lang.System.*;
+//import java.awt.Color;
+//import android.graphics.Color; //COLORS ARE REFERENCES TO RES FOLDER, NOT DYNAMICALLY ASSIGNABLE, java.awt.Color off limits,
 								//will implement different way for user to choose color once the rest is running properly
 
 public class Category{
 
 	String name; //CategoryID?
-	Color color;//could change to r,g,b, and maybe a(alpha)
-				//need to define the default color
+	int color = 0xFFABCDEF;	//this color is a cool-light blue
+		//colors are defined in hexadecimal as AARRGGBB (A is alpha, all values are 0-255 -> 00-FF)
 
 	public Category(){
 		name = null;	//redundant?
-		//Color = ?
 	}
 	public Category(String name){
 		this.name = name;
-		//requires default color to be defined
 	}
-	public Category(String name, Color color){
+	public Category(String name, int color){
 		this.name = name;
 		this.color = color;
 	}
@@ -36,14 +35,14 @@ public class Category{
 	public void setName(String name){
 		this.name = name;
 	}
-	public void setColor(Color color){
+	public void setColor(int color){
 		this.color = color;
 	}
 
 	public String getName(){
 		return name;
 	}
-	public Color getColor(){
+	public int getColor(){
 		return color;
 	}
 }//end Category class
