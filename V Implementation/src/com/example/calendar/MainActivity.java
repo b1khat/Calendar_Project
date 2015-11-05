@@ -8,27 +8,20 @@ import android.view.MenuItem;
 import android.view.View;		//tut
 import android.widget.Button;	//part of tut
 import android.widget.TextView;	//tut
-
-import java.util.*;
 //import android.graphics.Color;
-//import java.awt.Color;
+import java.awt.Color;
 
 public class MainActivity extends ActionBarActivity {
 
 	private int counter;	//vars part of tutorial
 	Button add, sub;		
-	TextView display;
-	
-	private Globals global;
+	TextView display;		
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // res/layout/activity_main.xml
-        
-        global = (Globals)getApplicationContext();
-        global.setSelectedDate(Calendar.getInstance().getTime());	//set selectedDate to today's date
-        
+    
         setupTutorialButtons();
         setupTestFixture();
         setupNavigationButton();
@@ -67,12 +60,8 @@ public class MainActivity extends ActionBarActivity {
     
     private void setupTestFixture(){
     	Category defaultCat = new Category("Default Category");
-    	Category cat1 = new Category("Category juan", 0x12345679);
-    	EventManager.addEvent(new Event("Hey man, I start work at 1:10 AM?", new GregorianCalendar(2015, 9, 30, 1, 10), new GregorianCalendar(2015, 9, 30, 2, 10), defaultCat));
-    	EventManager.addEvent(new Event("Ayy waddup breh?", new GregorianCalendar(2015, 9, 30, 2, 10), new GregorianCalendar(2015, 9, 31, 2, 10), defaultCat));
-    	EventManager.addEvent(new Event("third event :(", new GregorianCalendar(2015, 9, 30, 1, 10), new GregorianCalendar(2015, 9, 30, 2, 10), cat1));
-    	EventManager.addEvent(new Event("what you wa\nnt", new GregorianCalendar(2015, 9, 30, 5, 10), new GregorianCalendar(2015, 9, 30, 7, 10), cat1));
-    	defaultCat.setColor(0x99420690);
+    	EventManager.addEvent(new Event("Event 1", new Date(104, 0, 1, 15, 45), new Date(104, 0, 1, 17,45), defaultCat ));
+    	EventManager.addEvent(new Event("Birthday", new Date(1995-1900, 6, 27, 7, 30), new Date(1995-1900, 6, 27, 8, 42), defaultCat));
     }
     
     @Override
