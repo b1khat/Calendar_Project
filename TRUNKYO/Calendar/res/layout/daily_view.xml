@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.example.calendar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
     
     <LinearLayout
+	    android:id="@+id/topBannerDailyLayout"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >
-        
+	    android:layout_height="wrap_content" 
+	    android:layout_alignParentTop="true"
+	    android:background="@color/borderColor1">
         
 	   <TextView
 	        android:id="@+id/theDate"
@@ -20,19 +21,64 @@
 	        android:textSize="25sp" />
 	
 	    <Button
-	        android:id="@+id/todayButtonDaily"
+	        android:id="@+id/addEventButtonDaily"
 	        android:layout_width="match_parent"
-	        android:layout_height="30dp"
+	        android:layout_height="match_parent"
 	        android:layout_gravity="end"
 	        android:gravity="center"
 	        android:padding="0dp"
-	        android:text="TODAY"
+	        android:text="Add Event"
 	        android:textSize="10sp"
 		/>
         
     </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/dayNavigationBarDailyLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/borderColor1">
+		    
+			<Button
+		        android:id="@+id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="center"
+		        android:layout_centerHorizontal="true"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="TODAY"
+		        android:textSize="15sp"
+		        android:onClick="todayButtonDailyOnClick" />
+			<Button
+		        android:id="@+id/previousDayButton"
+		        android:layout_toLeftOf="@id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Prev. Day"
+		        android:textSize="15sp"
+		        android:onClick="previousDayButtonOnClick" />
+			<Button
+		        android:id="@+id/nextDayButton"
+		        android:layout_toRightOf="@id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="end"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Next Day"
+		        android:textSize="15sp"
+		        android:onClick="nextDayButtonOnClick" />
+    </RelativeLayout>
    
-    <ScrollView android:layout_width="match_parent" 
+    <ScrollView android:id="@+id/dailyScrollView"
+        		android:layout_above="@+id/dayNavigationBarDailyLayout"
+        		android:layout_below="@+id/topBannerDailyLayout"
+        		android:layout_width="match_parent" 
         		android:layout_height="wrap_content">
 
 		<RelativeLayout
@@ -250,4 +296,6 @@
 		</RelativeLayout>  
 	</ScrollView>
 
-</LinearLayout>
+
+
+</RelativeLayout>

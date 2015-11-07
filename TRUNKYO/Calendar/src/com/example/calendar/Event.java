@@ -1,6 +1,6 @@
 package com.example.calendar;
 
-import java.util.Calendar;
+//import java.util.Calendar;
 import java.util.Date;	//deprecated! TimeStamp, Calendar, GregorianCalendar, Time
 import java.util.GregorianCalendar;
 
@@ -73,10 +73,12 @@ public class Event{
 		description = newDescription;
 	}
 	public void setStartTime(int year, int month, int day, int hour, int minute){	//perhaps change this to setStartTime(Date newStartTime)
-		startTime = new GregorianCalendar(year-1970, month, day, hour, minute);	//the year minus 1970 (the start year from Date API)
+		//startTime = new GregorianCalendar(year-1970, month, day, hour, minute);	//the year minus 1970 (the start year from Date API)
+		startTime = new GregorianCalendar(year, month, day, hour, minute);	//verify this in all similar methods
 	}
 	public void setEndTime(int year, int month, int day, int hour, int minute){
-		endTime = new GregorianCalendar(year-1970, month, day, hour, minute);
+		//endTime = new GregorianCalendar(year-1970, month, day, hour, minute);
+		endTime = new GregorianCalendar(year, month, day, hour, minute);
 	}
 	public void setCategory(Category cat){
 		category = cat;

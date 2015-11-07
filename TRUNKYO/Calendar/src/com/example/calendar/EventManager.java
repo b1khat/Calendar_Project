@@ -42,7 +42,7 @@ public class EventManager{			//does this need to be all static?
 					}
 					if(i+1==lcv){	//if we are at end of list
 						eventList.add(newEvent);//add to end of list
-						//return;
+						//return;	//should be exiting anyways
 					}
 				}
 			}
@@ -106,9 +106,9 @@ public class EventManager{			//does this need to be all static?
 			startTime = e.getStartTime();
 			//endTime = e.getEndTime();
 			if( startTime.compareTo(startPeriod) >= 0 ){	//event starts after the period begins (or at the exact moment)
-				out.println("YOU GOT HERE LAYER 1");	//if( endTime.compareTo(startPeriod) < )  //If we have extra time, add an option in settings to show events that started on days prior
+				//out.println("YOU GOT HERE LAYER 1");	//if( endTime.compareTo(startPeriod) < )  //If we have extra time, add an option in settings to show events that started on days prior
 				if( startTime.compareTo(endPeriod) < 0 ){	//event starts before the period ends
-					out.println("YOU GOT HERE LAYER 2");
+					//out.println("YOU GOT HERE LAYER 2");
 					eventsInPeriod.add(e);
 				}
 			}

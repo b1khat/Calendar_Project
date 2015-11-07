@@ -25,10 +25,11 @@
         </activity>
         <activity
             android:name=".DailyViewActivity"
-            android:label="Daily View"
-        />
-        
+            android:label="Daily View" />
+        <activity
+            android:name=".EventEditActivity"
+            android:label="@string/title_activity_event_edit" >
+        </activity>
     </application>
-
 
 </manifest>
