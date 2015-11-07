@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,27 +45,25 @@ public class EventEditActivity extends Activity {	//ActionBarActivity gives the 
 		nameField = (EditText)findViewById(R.id.editTextEventName);
 		nameField.setText(displayedEvent.getName());
 		
-		TVeventStartDate = (TextView)findViewById(R.id.textViewEventStartDate);
+		TVeventStartDate = (TextView)findViewById(R.id.textViewEventStartDate);			//could omit the TextViews
         TVeventStartDate.setText(shortForm.format(displayedEvent.getStartTime()));     //unfortunate collision of date-time terms (cause by date time pickers being separate API)   
 		
 		Date startTime = displayedEvent.getStartTime();
-		startDateField = (DatePicker)findViewById(R.id.datePickerStartTime);
+		startDateField = (DatePicker)findViewById(R.id.datePickerStartDate);
 		startDateField.updateDate(startTime.getYear() + 1900, startTime.getMonth(), startTime.getDate());
+		
+		startTimeField = (TimePicker)findViewById(R.id.timePickerStartTime);
 	}
-
-	public void startDateDialog(View view){
-		//TO-DO 
-		//setup the datePickerDialog (and maybe time picker in same dialog as well)
-		//when dialog is done, need to update the appropriate view's text
-	}
+	
+	
 	
 	public void saveChanges(View view){
 		//Implement safety checks (if there is a conflict, send a long toast
 			//check for null string fields
 			//CALL A METHOD TO VERIFY INFORMATION AND CALL GETEVENTS if empty, go ahead and save changes
-			//make sure event starts before it ends LOL
+			//make sure event starts before it ends LOL can be done by setting min/max for the pickers
 		displayedEvent.setName( nameField.getText().toString());
-		//InputType can be used to restrict to dates :DD
+
 		System.out.println(displayedEvent);
 		displayedEvent.setStartTime(startDateField.getYear(), startDateField.getMonth(), startDateField.getDayOfMonth(), 6, 30);
 		System.out.println(startDateField.getYear() + "  " + startDateField.getMonth() + "  " + startDateField.getDayOfMonth());	//DEBUGGING

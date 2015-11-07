@@ -195,7 +195,7 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
     }
     
     private void refreshDisplay(){
-    	if(!eventButtonList.isEmpty()){
+    	if(!eventButtonList.isEmpty()){		//is this check pointless?
     		for(Button eventButton: eventButtonList){
     			dailyLayout.removeView(eventButton);	//remove the buttons from the layout to make way for new buttons 
     		}											//corresponding to the *possibly changed* events (since the activity may not have been destroyed)
