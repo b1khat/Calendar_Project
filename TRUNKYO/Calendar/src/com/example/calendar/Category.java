@@ -28,8 +28,9 @@ public class Category{
 	}
 
 	public String toString(){
-		return "Category Name:\t" + name +
-			"\nCategory Color:\t" + color;
+	//	return "Category Name:\t" + name +
+		//	"\nCategory Color:\t" + color;	//debugging
+		return name;	//makes the use in spinner easier
 	}
 
 	public void setName(String name){

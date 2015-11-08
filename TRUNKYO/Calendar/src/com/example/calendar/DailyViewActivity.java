@@ -81,8 +81,10 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
     	RelativeLayout.LayoutParams eventButtonParams = new RelativeLayout.LayoutParams(
 																			RelativeLayout.LayoutParams.MATCH_PARENT,
 																			RelativeLayout.LayoutParams.MATCH_PARENT);
-    	int eventStartHour = event.getStartTime().getHours();
-    	int eventEndHour = event.getEndTime().getHours();
+    	Date eventStart = event.getStartTime();
+    	Date eventEnd = event.getEndTime();
+    	int eventStartHour = eventStart.getHours();
+    	int eventEndHour = eventEnd.getHours();
     	
     	eventButtonParams.addRule(RelativeLayout.RIGHT_OF, R.id.hour1);	//eventButtons will always be to the right of the hour column
     	
@@ -113,11 +115,15 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
     		case 23: eventButtonParams.addRule(RelativeLayout.ALIGN_TOP, R.id.hour23); 	break;
     	}
 
-    	//if(event.getEndTime().getDate().compareTo(selectedDate) != 0){ //if it doesn't end on this same day
-    	//		eventButtonParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM); maybe add align parent right as well if it works
-    	//}else{
+    	if(selectedDate.getDate() < eventEnd.getDate() || 
+    				selectedDate.getMonth() < eventEnd.getMonth()  ||
+    				selectedDate.getYear() < eventEnd.getYear() 	){	//IF the event ends after displayed date, expand its button to the bottom of layout
+    		eventButtonParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.hour23);
+        	return eventButtonParams;
+    	}
+    	
     	switch(eventEndHour){
-			case 0: 
+			case 0: //same as hour 1 because we need the event snippet to be tall enough
 			case 1: eventButtonParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.hour1); break;
 			case 2: eventButtonParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.hour2); break;
 			case 3: eventButtonParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.hour3); break;

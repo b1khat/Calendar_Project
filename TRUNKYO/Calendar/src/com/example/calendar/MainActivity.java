@@ -68,6 +68,9 @@ public class MainActivity extends ActionBarActivity {
     private void setupTestFixture(){
     	Category defaultCat = new Category("Default Category");
     	Category cat1 = new Category("Category juan", 0x12345679);
+    	EventManager.addCategory(defaultCat);
+    	EventManager.addCategory(cat1);	//need to make it to where events aren't added without adding the category to EM
+    	EventManager.addCategory(new Category("ROASTIN BRUH", 0x55555555));
     	EventManager.addEvent(new Event("Hey man, I start work at 1:10 AM?", new GregorianCalendar(2015, 10, 6, 1, 10), new GregorianCalendar(2015, 10, 6, 2, 10), defaultCat));
     	EventManager.addEvent(new Event("Ayy waddup breh?", new GregorianCalendar(2015, 10, 7, 2, 10), new GregorianCalendar(2015, 10, 7, 2, 10), defaultCat));
     //	EventManager.addEvent(new Event("third event :(", new GregorianCalendar(2015, 10, 3, 1, 10), new GregorianCalendar(2015, 10, 3, 2, 10), cat1));

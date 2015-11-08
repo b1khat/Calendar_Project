@@ -87,17 +87,17 @@ public class Event{
 	public String getName(){
 	//	if(name!=null && !name.isEmpty())
 			return name;
-	//	return "NO SET NAME ERROR";	//can change to exception
+	//	return "NO SET NAME";// ERROR";	//can change to exception
 	}
 	public String getLocation(){
 		if(location!=null && !location.isEmpty())
 			return location;
-		return "NO SET LOCATION ERROR";	//can change to exception
+		return "NO SET LOCATION";// ERROR";	//can change to exception
 	}
 	public String getDescription(){
 		if(description!=null && !description.isEmpty())
 			return description;
-		return "NO SET DESCRIPTION ERROR";	//can change to exception
+		return "NO SET DESCRIPTION";// ERROR";	//can change to exception
 	}
 
 	public Date getStartTime(){
