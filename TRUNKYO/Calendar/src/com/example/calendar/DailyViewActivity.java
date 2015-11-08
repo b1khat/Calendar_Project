@@ -177,7 +177,8 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
     }
 
     public void todayButtonDailyOnClick(View view){	//named with "Daily" because there may be todayButtons for weekly/monthly
-    	Date today = Calendar.getInstance().getTime();
+    	Date today = Calendar.getInstance().getTime();	//Causes the default time to be current time if the today button was the last navigation button pressed
+    														//not just because we are viewing today
     	if(selectedDate != today){	//IF the view is already displaying today, then take no action
     		global.setSelectedDate(today);
     		selectedDate = today;
@@ -198,6 +199,16 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
      	global.setSelectedDate(nextDay);
      	selectedDate = nextDay;
      	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
+    }
+    
+    public void addEventButtonDailyOnClick(View view){	//also named with"Daily" because of other similar buttons
+    	GregorianCalendar startCal = new GregorianCalendar();
+    	startCal.setTime(selectedDate);
+    	Event dummyEvent = new Event("No set name", startCal, startCal, EventManager.getCategories().get(0));	//requires a category inside the list,
+    																											//so we must assure user cannot delete default category!
+    	EventManager.addEvent(dummyEvent);
+    	global.setSelectedEvent(dummyEvent);
+    	startActivity(new Intent(DailyViewActivity.this, EventEditActivity.class));	//if it is null, and the user hits baack arrow instead of del/save, it's still there
     }
     
     private void refreshDisplay(){

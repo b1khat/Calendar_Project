@@ -75,13 +75,14 @@ public class MainActivity extends ActionBarActivity {
     	EventManager.addEvent(new Event("Ayy waddup breh?", new GregorianCalendar(2015, 10, 7, 2, 10), new GregorianCalendar(2015, 10, 7, 2, 10), defaultCat));
     //	EventManager.addEvent(new Event("third event :(", new GregorianCalendar(2015, 10, 3, 1, 10), new GregorianCalendar(2015, 10, 3, 2, 10), cat1));
     	EventManager.addEvent(new Event("what you wa\nnt", new GregorianCalendar(2015, 10, 6, 5, 10), new GregorianCalendar(2015, 10, 6, 7, 10), cat1));
-    	defaultCat.setColor(0x99420690);
+    //	defaultCat.setColor(0x99420690);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+    	super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.global_menu, menu);
         return true;
     }
 
@@ -90,10 +91,12 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()){
+        	case R.id.menu_option_category_manager:
+        		startActivity(new Intent(this, CategoryManagerActivity.class));
+        		break;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
+        //return super.onOptionsItemSelected(item);
     }
 }

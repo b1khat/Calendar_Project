@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+	
+	<TextView
+	    android:id="@+id/textViewCategoryManagerHeader" 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Category Manager"
+		android:textSize="25sp"
+		android:gravity="center"
+		android:background="@color/headerBackground" />
+	    
+	 <ScrollView
+	 	android:layout_width="match_parent"
+	 	android:layout_height="wrap_content"
+	 	android:layout_below="@id/textViewCategoryManagerHeader" >
+	 	    
+	 	<LinearLayout
+	 	    android:layout_width="match_parent"
+	 	   	android:layout_height="wrap_content" 
+	 	    android:orientation="vertical">
+	 	    
+	 	    <Button 
+				android:layout_width="wrap_content"
+			   	android:layout_height="wrap_content"
+			  	android:text="Create New Category"
+			    android:textSize="14sp"
+			    android:onClick="addCategoryOnClick"
+			    android:layout_gravity="center"
+			    android:minWidth="0dp"
+			    android:minHeight="0dp" />
+	 	    
+	 	    <LinearLayout 
+	 	        android:layout_width="match_parent"
+	 	        android:layout_height="wrap_content"
+	 	        android:orientation="horizontal">
+		 	    
+		 	    <TextView 
+			       	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			  	    android:text="Category:"
+			        android:textSize="18sp" />
+		 	    
+		 	    <Spinner
+			    	android:id="@+id/spinnerCategories"
+			    	android:layout_width="0dp"
+			     	android:layout_height="wrap_content"
+			   		android:layout_weight="1"
+			 		android:ems="10" 
+			        android:gravity="start" />
+	 	    </LinearLayout>
+	 	    
+	    
+			<LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal">
+		 	    
+			    <TextView 
+			       	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			  	    android:text="Red:"
+			        android:textSize="18sp"
+			        android:textColor="@color/red" />
+		 	    
+		 	    <EditText
+			    	android:id="@+id/editTextRed"
+			    	android:layout_width="0dp"
+			     	android:layout_height="wrap_content"
+			   		android:layout_weight="1"
+			 		android:ems="10" 
+			        android:gravity="center"
+			        android:inputType="number" />
+			    
+			</LinearLayout>"
+	 	    
+	 	    <LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal">
+		 	    
+			    <TextView 
+			       	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			  	    android:text="Green:"
+			        android:textSize="18sp"
+			        android:textColor="@color/green" />
+		 	    
+		 	    <EditText
+			    	android:id="@+id/editTextGreen"
+			    	android:layout_width="0dp"
+			     	android:layout_height="wrap_content"
+			   		android:layout_weight="1"
+			 		android:ems="10" 
+			        android:gravity="center"
+			        android:inputType="number" />
+			    
+			</LinearLayout>
+			
+	 	    <LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal">
+		 	    
+			    <TextView 
+			       	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			  	    android:text="Blue:"
+			        android:textSize="18sp" 
+			        android:textColor="@color/blue"/>
+		 	    
+		 	    <EditText
+			    	android:id="@+id/editTextBlue"
+			    	android:layout_width="0dp"
+			     	android:layout_height="wrap_content"
+			   		android:layout_weight="1"
+			 		android:ems="10" 
+			        android:gravity="center"
+			        android:inputType="number" />
+			    
+			</LinearLayout>
+			
+	 	    
+	 	    <Button 
+				android:layout_width="wrap_content"
+			   	android:layout_height="wrap_content"
+			  	android:text="Save Changes On Selected Category"
+			    android:textSize="14sp"
+			    android:onClick="saveChangeOnClick"
+			    android:layout_gravity="center"
+			    android:minWidth="0dp"
+			    android:minHeight="0dp" />
+	 	    
+	 	    <Button 
+				android:layout_width="wrap_content"
+			   	android:layout_height="wrap_content"
+			  	android:text="Delete Selected Category"
+			    android:textSize="14sp"
+			    android:onClick="deleteCategoryOnClick"
+			    android:layout_gravity="center"
+			    android:minWidth="0dp"
+			    android:minHeight="0dp" />
+	 	  
+	 	    	    
+	    </LinearLayout>
+	    
+	</ScrollView>
+	
+</RelativeLayout>

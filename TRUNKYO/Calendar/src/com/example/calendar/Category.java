@@ -13,7 +13,7 @@ package com.example.calendar;
 public class Category{
 
 	String name; //CategoryID?
-	int color = 0xFFABCDEF;	//this color is a cool-light blue
+	int color = 0xFFABCDEF;	//this default color is a cool-light blue
 		//colors are defined in hexadecimal as AARRGGBB (A is alpha, all values are 0-255 -> 00-FF)
 
 	public Category(){
@@ -45,5 +45,12 @@ public class Category{
 	}
 	public int getColor(){
 		return color;
+	}
+	
+	public boolean equals(Category otherCategory){
+		if(this.name == otherCategory.getName()){
+			return true;
+		}
+		return false;
 	}
 }//end Category class

@@ -57,7 +57,7 @@ public class EventManager{			//does this need to be all static?
 		/**In the case of repeating events (sharing every field except for start and endtimes ?) Do they need to be tied together?
 		 * Only delete the perfectly matching event.
 		 */
-		categoryList.remove(delEvent);
+		eventList.remove(delEvent);
 	}
 
 	//Delete all instances of a repeating event.

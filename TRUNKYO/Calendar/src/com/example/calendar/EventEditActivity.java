@@ -116,10 +116,22 @@ public class EventEditActivity extends Activity {
 		finish();
 	}
 
+	/**
+	 * OnClick method for the Delete Event button
+	 * 
+	 **/
+	public void deleteEvent(View view){
+		//if(event.isWeekly())
+		//removeAllInstancesOfEvent(displayedEvent);
+		EventManager.removeEvent(displayedEvent);
+		finish();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.event_edit, menu);
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.global_menu, menu);	//ideally, the menu button qwould do nothing on this screen
 		return true;
 	}
 
@@ -135,5 +147,11 @@ public class EventEditActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-//	public void onDestroy(){super.onDestroy(); finish();	}
+	@Override
+	public void onPause(){
+		super.onPause();
+		//need this to only work when creating new event, not when the event was pre-existant
+		//EventManager.removeEvent(displayedEvent);	//this leaves the app with no selectedEvent
+	}
+//	@Override public void onDestroy(){super.onDestroy(); finish();	}
 }
