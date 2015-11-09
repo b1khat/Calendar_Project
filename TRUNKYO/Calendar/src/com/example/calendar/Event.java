@@ -11,8 +11,6 @@ public class Event{
 		location,
 		description;
 
-//	private Date 	startTime,
-	//				endTime;
 
 	private GregorianCalendar 	startTime,
 								endTime;	//does this need to be Calendar for typecasting?
@@ -108,6 +106,44 @@ public class Event{
 	}
 	public Category getCategory(){
 		return category;
+	}
+
+	public boolean inConflict(Event otherEvent){
+		//Doesn't check for when they are at the exact same time!
+		Date start1 = startTime.getTime();
+		Date start2 = otherEvent.getStartTime();
+		Date end1 = endTime.getTime();
+		Date end2 = otherEvent.getEndTime();
+		if(start1.after(start2) && start1.before(end2)){
+			//This event starts between the beginning and end of otherEvent
+			return true;
+		}
+		if(end1.after(start2) && end1.before(end2)){
+			//This event ends between the beginning and end of otherEvent
+			return true;
+		}
+		if(start1.equals(start2) || end2.equals(end2)){
+			return true;
+		}
+		return false;
+	}
+	public boolean equals(Event otherEvent){
+		if(name.equals(otherEvent.getName())){
+			return false;
+		}
+	/*	if(location.equals(otherEvent.getLocation())){ //nullptr?
+			return false;
+		}
+		if(description.equals(otherEvent.getDescription())){
+			return false;
+		}*/
+		if(startTime.getTime().equals(otherEvent.getStartTime())){
+			return false;
+		}
+		if(endTime.getTime().equals(otherEvent.getEndTime())){
+			return false;
+		}//no need to check non-Time fields -> can't have multiple events at same time anyways
+		return true;
 	}
 
 }//end Event class

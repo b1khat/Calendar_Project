@@ -180,7 +180,23 @@
 			        android:timePickerMode="spinner" />
 		    </RelativeLayout>
 		    
-		     
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Repeat for this many weeks:"
+		            android:textSize="18sp"
+		            android:gravity="start" />
+		        <EditText
+		            android:id="@+id/editTextWeeklyRepetition" 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="0"
+		            android:textSize="18sp"
+		            android:gravity="end"
+		            android:inputType="number" />
+		    		     
+			     
 		    <Button
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"

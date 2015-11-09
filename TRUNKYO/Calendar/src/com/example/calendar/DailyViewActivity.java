@@ -30,8 +30,6 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         dailyLayout = (RelativeLayout) findViewById(R.id.ScrollingLayout);
         global = (Globals)getApplicationContext();
         
-        //getSupportActionBar().setHeight(0);
-        
         selectedDate = global.getSelectedDate();
     }
     
@@ -247,7 +245,6 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	//System.out.println("THIS IS THE eventButtonList length: " + eventButtonList.size()); //DEBUGGING
     }
     
-    //MENU IN ACTIVITY CAUSES SCROLLVIEW BOTTOM TO DISAPPEAR AND CAUSES THE BOTTOM BANNER TO DISAPPEAR AS WELL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -265,9 +262,16 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         	case R.id.menu_option_category_manager:
         		startActivity(new Intent(this, CategoryManagerActivity.class));
         		break;
+        	case R.id.menu_option_monthly_view:
+        			//don't really want to startActivity, cause then we could ahve huge stack
+        			//probably better to have some kind of thread switch? i don't know
+        		break;
+        	case R.id.menu_option_weekly_view:
+        		
+        		break;
+        	//no case for the current view (daily_view) because we should do nothing when that button is hit
         }
         return false;
-        //return super.onOptionsItemSelected(item);
     }
    
 }//end DailyViewActivity class
