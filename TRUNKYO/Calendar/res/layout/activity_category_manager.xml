@@ -23,16 +23,6 @@
 	 	   	android:layout_height="wrap_content" 
 	 	    android:orientation="vertical">
 	 	    
-	 	    <Button 
-				android:layout_width="wrap_content"
-			   	android:layout_height="wrap_content"
-			  	android:text="Create New Category"
-			    android:textSize="14sp"
-			    android:onClick="addCategoryOnClick"
-			    android:layout_gravity="center"
-			    android:minWidth="0dp"
-			    android:minHeight="0dp" />
-	 	    
 	 	    <LinearLayout 
 	 	        android:layout_width="match_parent"
 	 	        android:layout_height="wrap_content"
@@ -53,6 +43,27 @@
 			        android:gravity="start" />
 	 	    </LinearLayout>
 	 	    
+	 	    <LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal">
+		 	    
+			    <TextView 
+			       	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			  	    android:text="Name:"
+			        android:textSize="18sp" />
+		 	    
+		 	    <EditText
+			    	android:id="@+id/editTextCategoryName"
+			    	android:layout_width="0dp"
+			     	android:layout_height="wrap_content"
+			   		android:layout_weight="1"
+			 		android:ems="10" 
+			        android:gravity="center"
+			        android:inputType="text" />"
+			    
+			</LinearLayout>
 	    
 			<LinearLayout 
 			    android:layout_width="match_parent"
@@ -75,7 +86,7 @@
 			        android:gravity="center"
 			        android:inputType="number" />
 			    
-			</LinearLayout>"
+			</LinearLayout>
 	 	    
 	 	    <LinearLayout 
 			    android:layout_width="match_parent"
@@ -130,6 +141,16 @@
 			  	android:text="Save Changes On Selected Category"
 			    android:textSize="14sp"
 			    android:onClick="saveChangeOnClick"
+			    android:layout_gravity="center"
+			    android:minWidth="0dp"
+			    android:minHeight="0dp" />
+	 	    
+	 	    <Button 
+				android:layout_width="wrap_content"
+			   	android:layout_height="wrap_content"
+			  	android:text="Save As New Category"
+			    android:textSize="14sp"
+			    android:onClick="addCategoryOnClick"
 			    android:layout_gravity="center"
 			    android:minWidth="0dp"
 			    android:minHeight="0dp" />

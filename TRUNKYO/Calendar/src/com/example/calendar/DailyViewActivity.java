@@ -6,13 +6,16 @@ import java.util.*;	//Date, Calendar, & GregorianCalendar
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;	
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;	
 import android.widget.TextView;	
 import android.widget.RelativeLayout;
 
 
-public class DailyViewActivity extends Activity { //ActionBarActivity //CompatActivity
+public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity //CompatActivity
 
 	private RelativeLayout dailyLayout;
 	private Globals global;
@@ -26,6 +29,8 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
         
         dailyLayout = (RelativeLayout) findViewById(R.id.ScrollingLayout);
         global = (Globals)getApplicationContext();
+        
+        //getSupportActionBar().setHeight(0);
         
         selectedDate = global.getSelectedDate();
     }
@@ -240,6 +245,29 @@ public class DailyViewActivity extends Activity { //ActionBarActivity //CompatAc
         setDisplayedDate();
     	displayEvents();
     	//System.out.println("THIS IS THE eventButtonList length: " + eventButtonList.size()); //DEBUGGING
+    }
+    
+    //MENU IN ACTIVITY CAUSES SCROLLVIEW BOTTOM TO DISAPPEAR AND CAUSES THE BOTTOM BANNER TO DISAPPEAR AS WELL
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+    	super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.global_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch(item.getItemId()){
+        	case R.id.menu_option_category_manager:
+        		startActivity(new Intent(this, CategoryManagerActivity.class));
+        		break;
+        }
+        return false;
+        //return super.onOptionsItemSelected(item);
     }
    
 }//end DailyViewActivity class

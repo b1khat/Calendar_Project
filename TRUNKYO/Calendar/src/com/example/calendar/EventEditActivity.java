@@ -127,31 +127,4 @@ public class EventEditActivity extends Activity {
 		finish();
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.global_menu, menu);	//ideally, the menu button qwould do nothing on this screen
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	public void onPause(){
-		super.onPause();
-		//need this to only work when creating new event, not when the event was pre-existant
-		//EventManager.removeEvent(displayedEvent);	//this leaves the app with no selectedEvent
-	}
-//	@Override public void onDestroy(){super.onDestroy(); finish();	}
-}
+}//end class EventEditActivity
