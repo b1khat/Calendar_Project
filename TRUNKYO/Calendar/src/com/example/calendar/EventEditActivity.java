@@ -102,9 +102,9 @@ public class EventEditActivity extends Activity {
 	public void saveChanges(View view){
 		//Implement safety checks (if there is a conflict, send a long toast
 			
-	//	if(!currentInfoIsValid()){
-	//		return;	//abort save, don't exit the event edit
-	//	}
+		if(!currentInfoIsValid()){
+			return;	//abort save, don't exit the event edit
+		}
 		
 		displayedEvent.setName( nameField.getText().toString());
 		displayedEvent.setLocation( locationField.getText().toString());
@@ -175,9 +175,9 @@ public class EventEditActivity extends Activity {
 								new GregorianCalendar(endDateField.getYear(), endDateField.getMonth(), endDateField.getDayOfMonth(),
 														endTimeField.getHour(), endTimeField.getMinute() ), 
 														tempCat);
-		//eventList.remove(displayedEvent);	//no need to compare with the pre-edited version of itself
+		eventList.remove(displayedEvent);	//no need to compare with the pre-edited version of itself
 											//need to reinsert this after the check though!
-		for(Event event: eventList){
+	/*	for(Event event: eventList){
 			if(tempEvent.inConflict(event)){
 				if(tempEvent.equals(event)){
 					System.out.println("In conflict yup");
@@ -188,21 +188,23 @@ public class EventEditActivity extends Activity {
 			}
 		}
 		System.out.println("PAST THE FIRST CHECK NOPE");
-		for(int repetition = 1; repetition <= Integer.parseInt(weeklyRepetitionField.getText().toString()); repetition++){
-			tempEvent = new Event("", 
-					new GregorianCalendar(startDateField.getYear(), startDateField.getMonth(), startDateField.getDayOfMonth() + 7*repetition,	//7 days ahead (1 week) 
-							startTimeField.getHour(), startTimeField.getMinute()), 
-					new GregorianCalendar(endDateField.getYear(), endDateField.getMonth(), endDateField.getDayOfMonth() + 7*repetition,
-							endTimeField.getHour(), endTimeField.getMinute() ), 
-					tempCat);
+	*/
+		for(int repetition = 0; repetition <= numberOfWeeks; repetition++){
+			tempEvent.setStartTime(startDateField.getYear(), startDateField.getMonth(), startDateField.getDayOfMonth() + 7*repetition,	//7 days ahead (1 week) 
+									startTimeField.getHour(), startTimeField.getMinute()); 
+			tempEvent.setEndTime(endDateField.getYear(), endDateField.getMonth(), endDateField.getDayOfMonth() + 7*repetition,
+									endTimeField.getHour(), endTimeField.getMinute());
+	
 			for(Event event: eventList){
 				if(tempEvent.inConflict(event)){
+					System.out.println(tempEvent + " \n\n\n" + event);
 					Toast.makeText(getApplicationContext(), "Event in conflict upon weekly repetition " + repetition + "; Changes not saved.", Toast.LENGTH_LONG).show();
+					eventList.add(displayedEvent);
 					return false;
 				}
 			}
 		}
-		
+		eventList.add(displayedEvent);
 		return true;
 	}
 	

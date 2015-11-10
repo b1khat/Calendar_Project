@@ -109,29 +109,37 @@ public class Event{
 	}
 
 	public boolean inConflict(Event otherEvent){
-		//Doesn't check for when they are at the exact same time!
 		Date start1 = startTime.getTime();
 		Date start2 = otherEvent.getStartTime();
 		Date end1 = endTime.getTime();
 		Date end2 = otherEvent.getEndTime();
 		if(start1.after(start2) && start1.before(end2)){
-			//This event starts between the beginning and end of otherEvent
+			System.out.println("This event starts between the beginning and end of otherEvent");
 			return true;
 		}
 		if(end1.after(start2) && end1.before(end2)){
-			//This event ends between the beginning and end of otherEvent
+			System.out.println("This event ends between the beginning and end of otherEvent");
 			return true;
 		}
-		if(start1.equals(start2) || end2.equals(end2)){
+		if(start2.after(start1) && start2.before(end1)){	//necessary checks because an event can begin before another event, then end after the other event ends
+			System.out.println("Other event starts in span of this event");
+			return true;
+		}
+		if(end2.after(start1) && end2.before(end1)){
+			System.out.println("Other event ends in span of this event");
+			return true;
+		}
+		if(start1.equals(start2) || end1.equals(end2)){	
+			System.out.println("the events start or end at the exact same times (not a big deal if one ends while another starts?)");
 			return true;
 		}
 		return false;
 	}
-	public boolean equals(Event otherEvent){
-		if(name.equals(otherEvent.getName())){
+	public boolean equals(Event otherEvent){	//can delete method, never used
+	/*	if(name.equals(otherEvent.getName())){
 			return false;
 		}
-	/*	if(location.equals(otherEvent.getLocation())){ //nullptr?
+		if(location.equals(otherEvent.getLocation())){ //nullptr?
 			return false;
 		}
 		if(description.equals(otherEvent.getDescription())){
