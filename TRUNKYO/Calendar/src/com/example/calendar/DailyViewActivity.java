@@ -29,8 +29,6 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         
         dailyLayout = (RelativeLayout) findViewById(R.id.ScrollingLayout);
         global = (Globals)getApplicationContext();
-        
-        selectedDate = global.getSelectedDate();
     }
     
     private void displayEvents(){
@@ -146,10 +144,10 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	TextView currentDateTV = (TextView)findViewById(R.id.theDate);
 
     	String theDateText = "";
-
+    	selectedDate = global.getSelectedDate();
+    	
         SimpleDateFormat shortForm = new SimpleDateFormat("d E MMM y");	//format date as Day# Weekday(abbreviated) Month(abbrev.) YYYY
-        theDateText += shortForm.format(selectedDate);        
-        System.out.println("SETDISPLAYEDDATE");
+        theDateText += shortForm.format(selectedDate);
         currentDateTV.setText(theDateText);
     }
 
@@ -237,12 +235,12 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         		startActivity(new Intent(this, CategoryManagerActivity.class));
         		break;
         	case R.id.menu_option_monthly_view:
-        		//startActivity(new Intent(this, MonthlyViewActivity.class));
-        			//don't really want to startActivity, cause then we could ahve huge stack
-        			//probably better to have some kind of thread switch? i don't know
+        		startActivity(new Intent(this, MonthlyViewActivity.class));
+        		finish();
         		break;
         	case R.id.menu_option_weekly_view:
         		startActivity(new Intent(this, WeeklyViewActivity.class));
+        		finish();
         		break;
         	//no case for the current view (daily_view) because we should do nothing when that button is hit
         }

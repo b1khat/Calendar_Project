@@ -5,4 +5,7 @@
     <color name="red">					#FFFF0000</color>
     <color name="green">				#FF00FF00</color>
     <color name="blue">					#FF0000FF</color>
+    <color name="weekends">				#FF129956</color>
+    <color name="holidays">				#99773321</color>
+    <color name="weekdays">				#454356F9</color>
 </resources>

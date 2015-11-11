@@ -32,8 +32,7 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
         
         weeklyLayout = (RelativeLayout) findViewById(R.id.weeklyLayout);
         global = (Globals)getApplicationContext();
-        
-        selectedDate = global.getSelectedDate();
+
     }
 
     @Override
@@ -57,6 +56,8 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
 
     private void setDisplayedWeek(){
     	TextView currentWeekTV = (TextView)findViewById(R.id.theWeek);
+        
+        selectedDate = global.getSelectedDate();
     	
     	//REFACTOR THIS PIECE (EXTRACT METHOD + REFACtor all the gets)
     	dummyCalendar.setTime(selectedDate);
@@ -105,7 +106,7 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	Date eventEnd = event.getEndTime();
     	dummyCalendar.setTime(eventStart);
     	int eventStartDayOfWeek = dummyCalendar.get(Calendar.DAY_OF_WEEK);
-    	//int eventEndDayOfWeek = //IMPLEMENT LATER POSSIBLY FOR DISPLAYING EVENTS THAT SPAN MULTIPLE DAYS
+    	//int eventEndDayOfWeek = //IMPLEMENT LATER POSSIBLY FOR DISPLAYING EVENTS THAT SPAN MULTIPLE DAYS (care for ending past this week)
     	int eventStartHour = eventStart.getHours();
     	int eventEndHour = eventEnd.getHours();
     	
@@ -213,9 +214,8 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	displayEvents();	//to show the newly-relevant events and their corresponding buttons
     }
 
-    public void todayButtonWeeklyOnClick(View view){	//named with "Daily" because there may be todayButtons for weekly/monthly
-    	Date today = Calendar.getInstance().getTime();	//Causes the default time to be current time if the today button was the last navigation button pressed
-    														//not just because we are viewing today
+    public void todayButtonWeeklyOnClick(View view){	//named with "Weekly" because there may be todayButtons for weekly/monthly
+    	Date today = Calendar.getInstance().getTime();	
     	//Implement? -> IF the view is already displaying this week, then take no action
     	global.setSelectedDate(today);
     	selectedDate = today;
@@ -266,15 +266,16 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
         		startActivity(new Intent(this, CategoryManagerActivity.class));
         		break;
         	case R.id.menu_option_monthly_view:
-        		//startActivity(new Intent(this, MonthlyViewActivity.class));
+        		startActivity(new Intent(this, MonthlyViewActivity.class));
+        		finish();
         		break;
         	case R.id.menu_option_daily_view:
         		startActivity(new Intent(this, DailyViewActivity.class));
+        		finish();
         		break;
         	//no case for the current view (weekly_view) because we should do nothing when that button is hit
         }
         return false;
     }
    
-
 }//end WeeklyViewActivity class

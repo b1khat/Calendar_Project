@@ -7,6 +7,8 @@
     <string name="testing_strings">Hey man this is the new Calendar app!</string>
     <string name="title_activity_event_edit">EventEditActivity</string>
     <string name="title_activity_category_manager">CategoryManagerActivity</string>
+    <string name="title_activity_daily_view">Daily View</string>
     <string name="title_activity_weekly_view">Weekly View</string>
+    <string name="title_activity_monthly_view">Monthly View</string>
 
 </resources>
