@@ -152,6 +152,16 @@ public class EventEditActivity extends Activity {
 			Toast.makeText(getApplicationContext(), "Please enter a valid name; Changes not saved.", Toast.LENGTH_LONG).show();
 			return false;
 		}
+		
+		Date newStartDate = new Date(startDateField.getYear(), startDateField.getMonth(), startDateField.getDayOfMonth(), 
+																	startTimeField.getHour(), startTimeField.getMinute());
+		Date newEndDate = new Date(endDateField.getYear(), endDateField.getMonth(), endDateField.getDayOfMonth(),
+																	endTimeField.getHour(), endTimeField.getMinute());
+		if(newStartDate.after(newEndDate)){
+			Toast.makeText(getApplicationContext(), "Event ends before it begins; Changes not saved.", Toast.LENGTH_LONG).show();
+			return false;
+		}
+		
 		String numberOfWeeksToRepeat = weeklyRepetitionField.getText().toString();
 		if(numberOfWeeksToRepeat == null || numberOfWeeksToRepeat.isEmpty()){
 			Toast.makeText(getApplicationContext(), "Please enter a valid number of weeks to repeat; Changes not saved.", Toast.LENGTH_LONG).show();
@@ -177,18 +187,7 @@ public class EventEditActivity extends Activity {
 														tempCat);
 		eventList.remove(displayedEvent);	//no need to compare with the pre-edited version of itself
 											//need to reinsert this after the check though!
-	/*	for(Event event: eventList){
-			if(tempEvent.inConflict(event)){
-				if(tempEvent.equals(event)){
-					System.out.println("In conflict yup");
-					System.out.println(tempEvent + " \n "+ event + " IN CONFLICT ");
-					Toast.makeText(getApplicationContext(), "Event is in time conflict with another; Changes not saved.", Toast.LENGTH_LONG).show();
-					return false;
-				}
-			}
-		}
-		System.out.println("PAST THE FIRST CHECK NOPE");
-	*/
+	
 		for(int repetition = 0; repetition <= numberOfWeeks; repetition++){
 			tempEvent.setStartTime(startDateField.getYear(), startDateField.getMonth(), startDateField.getDayOfMonth() + 7*repetition,	//7 days ahead (1 week) 
 									startTimeField.getHour(), startTimeField.getMinute()); 

@@ -25,7 +25,7 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.daily_view);
+        setContentView(R.layout.daily_view);	//really should be R.layout.activity_daily_view according to eclipse
         
         dailyLayout = (RelativeLayout) findViewById(R.id.ScrollingLayout);
         global = (Globals)getApplicationContext();
@@ -35,13 +35,11 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     
     private void displayEvents(){
     	//possibly utilize clipping? clip_vertical in RelativeLayout api
-    	//add a loop through all elements in teh given day
     	
-    	//Date selectedDate = global.getSelectedDate();
     	Date startOfSelectedDate = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate());
     	Date endOfSelectedDate = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate()+1);	//should be midnight (24 hours after start)
     	
-    	ArrayList<Event> eventsToDisplay = EventManager.getEvents(startOfSelectedDate, endOfSelectedDate);
+    	ArrayList<Event> eventsToDisplay = EventManager.getEvents(startOfSelectedDate, endOfSelectedDate);	//Fetches list of all events starting in selectedDate
     	for(Event e: eventsToDisplay){
 
     		Button eventButton = new Button(this);
@@ -54,30 +52,6 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     		dailyLayout.addView(eventButton);	//PUT THE BUTTON IN THE DAILYVIEW LAYOUT
     		eventButtonList.add(eventButton);	//store the button, so it may be deleted during refreshes
     	}
-    	
-    	
-   /* 	Button b1 = new Button(this);		//for immediate testing (doesn't require event added in EventManager
-    	
-    	RelativeLayout.LayoutParams b1params =  new RelativeLayout.LayoutParams(
-													RelativeLayout.LayoutParams.MATCH_PARENT,
-													RelativeLayout.LayoutParams.MATCH_PARENT);	//SEE WHAT THIS DOES TO events in same hour vs WRAP_CONTENT
-       	
-    	b1params.addRule(RelativeLayout.RIGHT_OF, R.id.hour1);
-    	b1params.addRule(RelativeLayout.ALIGN_TOP, R.id.hour15);
-    	b1params.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.hour18);  //3 to 6
-    
-    	b1.setMinHeight(0);
-    	b1.setPadding(15, 10, 20, 5); //this changes padding for things contained inside the button (space from the edges) L T R B
-    	b1.setTextSize(10);
-    	b1.setText("HEY MAN THIS IS THE FIRST EVENT");
-    	b1.setEllipsize(android.text.TextUtils.TruncateAt.END);	//cuts the text off when it doesn't fit and adds ellipses
-    	b1.setSingleLine();// restricts text to a single line
-    							//maybe setScrollHorizontally false? if needed
-    	b1.setGravity(Gravity.LEFT); //text inside button will be left aligned
-
-    	b1.setLayoutParams(b1params);
-    	dailyLayout.addView(b1);
-    */
     }
 
     private RelativeLayout.LayoutParams getEventButtonParams(Event event){
@@ -263,11 +237,12 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         		startActivity(new Intent(this, CategoryManagerActivity.class));
         		break;
         	case R.id.menu_option_monthly_view:
+        		//startActivity(new Intent(this, MonthlyViewActivity.class));
         			//don't really want to startActivity, cause then we could ahve huge stack
         			//probably better to have some kind of thread switch? i don't know
         		break;
         	case R.id.menu_option_weekly_view:
-        		
+        		startActivity(new Intent(this, WeeklyViewActivity.class));
         		break;
         	//no case for the current view (daily_view) because we should do nothing when that button is hit
         }

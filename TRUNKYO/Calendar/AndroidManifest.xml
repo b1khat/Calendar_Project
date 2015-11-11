@@ -34,6 +34,10 @@
             android:name=".CategoryManagerActivity"
             android:label="@string/title_activity_category_manager" >
         </activity>
+        <activity
+            android:name=".WeeklyViewActivity"
+            android:label="@string/title_activity_weekly_view" >
+        </activity>
     </application>
 
 </manifest>

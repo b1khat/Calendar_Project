@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<LinearLayout
+	    android:id="@+id/topBannerWeeklyLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    android:layout_alignParentTop="true"
+	    android:background="@color/borderColor1">
+        
+	   <TextView
+	        android:id="@+id/theWeek"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="start"
+	        android:gravity="center"
+	        android:text="WEEK HERE"
+	        android:textSize="25sp" />
+	
+	    <Button
+	        android:id="@+id/addEventButtonWeekly"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_gravity="end"
+	        android:gravity="center"
+	        android:padding="0dp"
+	        android:text="Add Event"
+	        android:textSize="10sp"
+			android:onClick="addEventButtonWeeklyOnClick"/>
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/dayNavigationBarWeeklyLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/borderColor1">
+		    
+			<Button
+		        android:id="@+id/todayButtonWeekly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="center"
+		        android:layout_centerHorizontal="true"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="TODAY"
+		        android:textSize="15sp"
+		        android:onClick="todayButtonWeeklyOnClick" />
+			<Button
+		        android:id="@+id/previousWeekButton"
+		        android:layout_toLeftOf="@id/todayButtonWeekly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Prev. Week"
+		        android:textSize="15sp"
+		        android:onClick="previousWeekButtonOnClick" />
+			<Button
+		        android:id="@+id/nextWeekButton"
+		        android:layout_toRightOf="@id/todayButtonWeekly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="end"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Next Week"
+		        android:textSize="15sp"
+		        android:onClick="nextWeekButtonOnClick" />
+    </RelativeLayout>
+   
+    <ScrollView
+        		android:layout_above="@+id/dayNavigationBarWeeklyLayout"
+        		android:layout_below="@+id/topBannerWeeklyLayout"
+        		android:layout_width="match_parent" 
+        		android:layout_height="match_parent">
+		<HorizontalScrollView
+		    	android:layout_width="match_parent" 
+        		android:layout_height="wrap_content">
+			
+			<RelativeLayout
+	          	android:layout_width="match_parent"
+	          	android:layout_height="wrap_content"
+	          	android:id="@+id/weeklyLayout" 
+	          	android:padding="0px">
+
+
+					<TextView
+				        android:id="@+id/dayW1"
+	  	        		android:layout_toEndOf="@+id/hourW1"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="SUN"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW2"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+				        android:layout_toRightOf="@id/dayW1"
+				        android:text="MON"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW3"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+	  	        		android:layout_toRightOf="@id/dayW2"
+				        android:text="TUE"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW4"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+	  	        		android:layout_toRightOf="@id/dayW3"
+				        android:text="WED"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW5"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+	  	        		android:layout_toRightOf="@id/dayW4"
+				        android:text="THU"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW6"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+	  	        		android:layout_toRightOf="@id/dayW5"
+				        android:text="FRI"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW7"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:minWidth="70dp"
+	  	        		android:gravity="center"
+	  	        		android:layout_toRightOf="@id/dayW6"
+				        android:text="SAT"
+				        android:textSize="12sp" /> 
+				    
+				    
+			    <TextView
+			        android:id="@id/hourW1"
+			        android:layout_below="@id/dayW1"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="1AM"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW2"
+			        android:layout_below="@id/hourW1"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="2"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW3"
+			        android:layout_below="@id/hourW2"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="3"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW4"
+			        android:layout_below="@id/hourW3"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="4"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW5"
+			        android:layout_below="@id/hourW4"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="5"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW6"
+			        android:layout_below="@id/hourW5"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="6"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW7"
+			        android:layout_below="@id/hourW6"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="7"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW8"
+			        android:layout_below="@id/hourW7"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="8"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW9"
+			        android:layout_below="@id/hourW8"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="9"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW10"
+			        android:layout_below="@id/hourW9"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="10"
+			        android:textSize="12sp" />  
+			    <TextView
+			        android:id="@+id/hourW11"
+			        android:layout_below="@id/hourW10"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="11"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW12"
+			        android:layout_below="@id/hourW11"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="12"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW13"
+			        android:layout_below="@id/hourW12"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="1PM"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW14"
+			        android:layout_below="@id/hourW13"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="2"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW15"
+			        android:layout_below="@id/hourW14"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="3"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW16"
+			        android:layout_below="@id/hourW15"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="4"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW17"
+			        android:layout_below="@id/hourW16"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="5"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW18"
+			        android:layout_below="@id/hourW17"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="6"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW19"
+			        android:layout_below="@id/hourW18"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="7"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW20"
+			        android:layout_below="@id/hourW19"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="8"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW21"
+			        android:layout_below="@id/hourW20"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="9"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW22"
+			        android:layout_below="@id/hourW21"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="10"
+			        android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/hourW23"
+			        android:layout_below="@id/hourW22"
+			        android:layout_width="25dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="start"
+			        android:gravity="center"
+			        android:text="11"
+			        android:textSize="12sp" />
+
+			    
+			    
+		    </RelativeLayout>
+	    </HorizontalScrollView>
+	</ScrollView>
+	
+</RelativeLayout>
