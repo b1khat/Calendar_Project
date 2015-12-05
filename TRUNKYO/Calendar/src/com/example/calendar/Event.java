@@ -1,10 +1,11 @@
 package com.example.calendar;
 
 //import java.util.Calendar;
+import java.io.Serializable;
 import java.util.Date;	//deprecated! TimeStamp, Calendar, GregorianCalendar, Time
 import java.util.GregorianCalendar;
 
-public class Event{
+public class Event implements Serializable{
 
 	private
 		String name,
@@ -135,22 +136,14 @@ public class Event{
 		}
 		return false;
 	}
-	public boolean equals(Event otherEvent){	//can delete method, never used
-	/*	if(name.equals(otherEvent.getName())){
+	
+	public boolean equals(Event otherEvent){
+		if(!startTime.getTime().equals(otherEvent.getStartTime())){
 			return false;
 		}
-		if(location.equals(otherEvent.getLocation())){ //nullptr?
+		if(!endTime.getTime().equals(otherEvent.getEndTime())){
 			return false;
-		}
-		if(description.equals(otherEvent.getDescription())){
-			return false;
-		}*/
-		if(startTime.getTime().equals(otherEvent.getStartTime())){
-			return false;
-		}
-		if(endTime.getTime().equals(otherEvent.getEndTime())){
-			return false;
-		}//no need to check non-Time fields -> can't have multiple events at same time anyways
+		}//no need to check non-Time fields <- can't have multiple events at same time anyways
 		return true;
 	}
 

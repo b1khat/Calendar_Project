@@ -35,7 +35,7 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_view);
         
-        setupTestFixture();	//This initializes some categories and events for quick display
+        //setupTestFixture();	//This initializes some categories and events for quick display during demo, do not come back to monthly view, or else duplicate categories
         
         monthlyLayout = (TableLayout) findViewById(R.id.tableLayoutMonthly);
         global = (Globals)getApplicationContext();

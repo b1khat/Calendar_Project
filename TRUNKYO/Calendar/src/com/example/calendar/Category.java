@@ -1,16 +1,17 @@
-/*addEvent still needs conflict management
- *or should it be implemented in another class?
+/*
  *
  *
  **/
 package com.example.calendar;
+
+import java.io.Serializable;
 
 //import static java.lang.System.*;
 //import java.awt.Color;
 //import android.graphics.Color; //COLORS ARE REFERENCES TO RES FOLDER, NOT DYNAMICALLY ASSIGNABLE, java.awt.Color off limits,
 								//will implement different way for user to choose color once the rest is running properly
 
-public class Category{
+public class Category implements Serializable{
 
 	String name; //CategoryID?
 	int color = 0xFFABCDEF;	//this default color is a cool-light blue
@@ -48,7 +49,7 @@ public class Category{
 	}
 	
 	public boolean equals(Category otherCategory){
-		if(this.name == otherCategory.getName()){
+		if(this.name.equals(otherCategory.getName())){
 			return true;
 		}
 		return false;

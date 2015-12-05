@@ -1,6 +1,14 @@
+/**
+ * 
+ * The methods setupTutorialButtons(), setupNavigationButton(), and setupTestFixture() are not
+ * utilized in the final working version of this calendar application.
+ * */
+
+
 package com.example.calendar;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.content.Intent;	//for starting new activities
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,9 +17,13 @@ import android.view.View;		//tut
 import android.widget.Button;	//part of tut
 import android.widget.TextView;	//tut
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
-//import android.graphics.Color;
-//import java.awt.Color;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,12 +40,151 @@ public class MainActivity extends ActionBarActivity {
         
         global = (Globals)getApplicationContext();
         global.setSelectedDate(Calendar.getInstance().getTime());	//set selectedDate to today's date
+        global.setAppIsStarting(true);	//the app is starting right now, this is the only time onCreate is called for this activity
         
-        setupTutorialButtons();
-        setupTestFixture();
-        setupNavigationButton();
+        //setupTutorialButtons();
+        //setupTestFixture();	//comment out once the IO is working
+        //setupNavigationButton();
     }
 
+    @Override
+    protected void onResume(){
+    	super.onResume();
+    	
+    	String 	categoryFileName = "categoryFile",
+    			eventFileName = "eventFile";
+    	
+    	boolean appIsStarting = global.getAppIsStarting();
+    	
+    	if(appIsStarting){
+    		System.out.println("APP IS STARTING NOW");
+    		//read from files
+    		try{	//Read in categories
+    			FileInputStream readCategoryStream = openFileInput(categoryFileName);
+    			ObjectInputStream catInStream = new ObjectInputStream(readCategoryStream);
+    			System.out.println("Opened teh input streams successfully");
+    			
+    			//READ IN CATEGORIES FROM FILE
+    			ArrayList<Category> catList; 
+    			catList = (ArrayList<Category>) catInStream.readObject();
+    			boolean listNeedsUpdate = false;
+    			int i = 0;
+    			ArrayList<Category> currentCatList = EventManager.getCategories();
+    			for(Category c: catList){
+    				if( i >= currentCatList.size()){
+    					listNeedsUpdate = true;
+    					System.out.println("File's catList is longer than the currentCatList");
+    					break;
+    				}
+    				System.out.println("index i:" + c + " " + currentCatList.get(i));
+    				if(!c.equals(currentCatList.get(i))){
+    					listNeedsUpdate = true;
+    					System.out.println("Unlike categories found at index" + i + ", needs update");
+    					break;
+    				}
+    				i++;
+    			}
+    			//The list needs updating, this check stops the app from doubling its list whenever reopening from running in the background
+    			if(listNeedsUpdate){
+    				for(Category ca : catList){
+        				EventManager.addCategory(ca);
+        			}
+    			}
+    			
+    			System.out.println("Closing input streams");
+    			catInStream.close();
+    			readCategoryStream.close();
+    			
+    		}catch(Exception e){
+    			//File not found, this means app is running first time -> must make category file and setup default category
+    			//This also means an empty event file must be created as well!
+    			try{
+    				System.out.println("CREATING THE NEW FILE FOR CATEGORIES");
+    				FileOutputStream createCatFile = openFileOutput(categoryFileName, Context.MODE_PRIVATE);//this creates the catFile
+    				ObjectOutputStream catOutStream = new ObjectOutputStream(createCatFile);
+    				System.out.println("CREATING THE NEW FILE FOR EVENTS");
+    				FileOutputStream createEventFile = openFileOutput(eventFileName, Context.MODE_PRIVATE);//this creates the eventFile
+    				ObjectOutputStream eventOutStream = new ObjectOutputStream(createEventFile);
+    				
+    				Category defaultCategory = new Category("Default Category");
+    				EventManager.addCategory(defaultCategory);
+    				catOutStream.writeObject(EventManager.getCategories());	//write the whole arraylists for future extraction
+    				eventOutStream.writeObject(EventManager.getEvents());	//empty eventList at this time
+    				
+    				catOutStream.close();
+    				createCatFile.close();
+    			}catch(Exception outputException){
+    				outputException.printStackTrace();
+    			}
+    		}
+    		
+    		try{	//This block runs even on the first opening, but it does not matter b/c the eventFile is already created above
+    			FileInputStream readEventStream = openFileInput(eventFileName);
+    			ObjectInputStream eventInStream = new ObjectInputStream(readEventStream);
+    			
+    			ArrayList<Event> eventList;
+    			eventList = (ArrayList<Event>) eventInStream.readObject();
+    			boolean eventListNeedsUpdate = false;
+    			int i = 0;
+    			ArrayList<Event> currentEventList = EventManager.getEvents();
+    			for(Event e: eventList){
+    				if( i >= currentEventList.size()){
+    					eventListNeedsUpdate = true;
+    					System.out.println("File's eventList is longer than the currentEventList");
+    					break;
+    				}
+    				System.out.println("index i:" + e.getName() + " " + currentEventList.get(i).getName());
+    				if(!e.equals(currentEventList.get(i))){
+    					eventListNeedsUpdate = true;
+    					System.out.println("Unlike events found at index" + i + ", needs update");
+    					break;
+    				}
+    				i++;
+    			}
+    			//The event list needs updating, this check stops the app from doubling its list whenever reopening from running in the background
+    			if(eventListNeedsUpdate){
+    				for(Event ev : eventList){
+        				EventManager.addEvent(ev);
+        			}
+    			}
+    			
+    			//System.out.println(EventManager.getEvents());
+    		}catch(Exception e){
+    			System.out.println("NO EVENTFILE FOUND");
+    		}
+    		
+    		global.setAppIsStarting(false); //set this flag to false, the app is no longer starting up
+    		//go to monthly view
+    		startActivity(new Intent(MainActivity.this, MonthlyViewActivity.class));	
+    	}else{
+    		//write to files (app is closing now)
+    		try{
+				FileOutputStream writeToCatFile = openFileOutput(categoryFileName, Context.MODE_PRIVATE);
+				ObjectOutputStream catOutStream = new ObjectOutputStream(writeToCatFile);
+				FileOutputStream writeToEventFile = openFileOutput(eventFileName, Context.MODE_PRIVATE);
+				ObjectOutputStream eventOutStream = new ObjectOutputStream(writeToEventFile);		
+				System.out.println("Opened final output streams");
+				
+				catOutStream.writeObject(EventManager.getCategories());
+				System.out.println("Saved categories");
+				eventOutStream.writeObject(EventManager.getEvents());
+				System.out.println("Saved events");
+				
+				System.out.println("Closing final output streams");
+				eventOutStream.close();
+				writeToEventFile.close();
+				catOutStream.close();
+				writeToCatFile.close();
+				
+    		}catch(Exception writingException){
+    			writingException.printStackTrace();
+    		}
+    		
+    		
+    		System.out.println("APP IS CLOSING NOW");
+    		finish();
+    	}
+    } 
     
     private void setupTutorialButtons(){
         counter = 0;

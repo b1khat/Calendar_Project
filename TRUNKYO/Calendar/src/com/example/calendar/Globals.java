@@ -12,6 +12,7 @@ public class Globals extends Application{
 	
 	private Date selectedDate;
 	private Event selectedEvent;
+	private boolean appIsStarting;
 	
 	protected Date getSelectedDate(){
 		return selectedDate;
@@ -27,6 +28,14 @@ public class Globals extends Application{
 	
 	protected void setSelectedEvent(Event newEvent){
 		selectedEvent = newEvent;
+	}
+	
+	protected boolean getAppIsStarting(){
+		return appIsStarting;
+	}
+	
+	protected void setAppIsStarting(boolean isStarting){
+		appIsStarting = isStarting;
 	}
 	
 	protected void setupEventButtonFormat(Button eventButton, Event event){
