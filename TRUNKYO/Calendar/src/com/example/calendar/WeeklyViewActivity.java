@@ -24,7 +24,11 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
 					startOfWeek, 
 					endOfWeek;
 	private Calendar dummyCalendar = Calendar.getInstance();	//used for extracting dayOfWeek(int) from Dates
-	
+
+	/**Sets the content view accordingly. Assigns appropriate values to the
+	 * weeklyLayout and global variables for future use.
+	 * @param savedInstanceState used for super class constructor call
+	 * **/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,8 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
 
     }
 
+    /**Calls setDisplayedWeek() and displayEvents() to setup the activity upon resuming.
+	 * **/
     @Override
     public void onResume(){	//onCreate -> onStart -> onResume
     	super.onResume();
@@ -42,7 +48,10 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
         setDisplayedWeek();
     	displayEvents();
     }
-    
+  
+    /**Removes all event buttons from the UI and clears the eventButtonList so that there will be no duplication
+     * of buttons upon this activity being brought back to the foreground.
+	 * **/
     @Override
     protected void onPause(){
     	super.onPause();
@@ -54,6 +63,9 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	}
     }
 
+    /**Updates the UI's week TextView to display the correct dates. It follows a format using SimpleDateFormat 
+     * from java public libraries. 
+	 * **/
     private void setDisplayedWeek(){
     	TextView currentWeekTV = (TextView)findViewById(R.id.theWeek);
         
@@ -76,7 +88,12 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
         endOfWeek.setHours(24);
         System.out.println(endOfWeek + "\n CHECK THIS");
     }    
-    
+ 
+    /**Sets up and displays all of the event buttons for the displayed week. Fetches all the 
+     * required events by using EventManager.getEvents(Date,Date) method and sets up the layout parameters
+     * for each event button using the global preferences (setupEventButtonFormat method) to retain consistent
+     * look and feel. Also calls methods inside this class to do the rest of the setup for the individual buttons.
+	 * **/
     private void displayEvents(){
     	
     //	Date startOfSelectedDate = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate());
@@ -97,6 +114,11 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	}
     }
 
+    /**Creates the appropriate layout parameters needed for the event's button to line up 
+     * relatively to the hour markers on the left side of the screen and the day markers on the top.
+     * @param event the event for which this set of button layout parameters are being found for
+     * @return RelativeLayout.LayoutParams the layout parameters required for the event's button to line up with the axes of weekly UI
+	 * **/
     private RelativeLayout.LayoutParams getEventButtonParams(Event event){
 
     	RelativeLayout.LayoutParams eventButtonParams = new RelativeLayout.LayoutParams(
@@ -192,7 +214,11 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	}
     	return eventButtonParams;
     }
-        
+    
+    /**Makes sure that the event's button will lead to a corresponding editEvent page when clicked.
+     * @param eventButton the event's button
+     * @param event the event that this button listener and button is for
+	 * **/     
     private void setupEventButtonListener(Button eventButton, final Event event){	//eclipse says the parameter has to be final, I don't know why
     	eventButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -203,6 +229,9 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
 		});
     }    
 
+    /**Refreshes the UI to reflect any changes and performs necessary clean up. Removes all eventButtons from the UI and then 
+     * deletes them from the eventButtonList to make way for future use.
+	 * **/
     private void refreshDisplay(){
   //  	if(!eventButtonList.isEmpty()){		//is this check pointless?
     		for(Button eventButton: eventButtonList){
@@ -214,6 +243,10 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	displayEvents();	//to show the newly-relevant events and their corresponding buttons
     }
 
+    /**Sets the global preferences to reflect that the selected date is now today.
+     * Also calls refshDisplay() method.
+     * @param view the view that triggers this method on click
+	 * **/
     public void todayButtonWeeklyOnClick(View view){	//named with "Weekly" because there may be todayButtons for weekly/monthly
     	Date today = Calendar.getInstance().getTime();	
     	//Implement? -> IF the view is already displaying this week, then take no action
@@ -223,6 +256,10 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	
     }
     
+    /**Sets the global preferences to reflect that the date seven days before the previously selected date is now the selected date.
+     * Calls refreshDisplay() method.
+     * @param view the view that triggers this method upon being clicked
+	 * **/
     public void previousWeekButtonOnClick(View view){
     	//System.out.println("in prevDayonclick: " + selectedDate.getYear() + " " + selectedDate.getMonth() + " " + (selectedDate.getDate() - 1));
     	Date previousWeek = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate() - 7);
@@ -231,13 +268,20 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
 
+    /**Sets the global preferences to reflect that the date seven days ahead of the previously selected date is now the selected date.
+     * Calls refreshDisplay() method.
+     * @param view the view that triggers this method upon being clicked
+	 * **/
     public void nextWeekButtonOnClick(View view){
      	Date nextWeek = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate() + 7);
      	global.setSelectedDate(nextWeek);
      	selectedDate = nextWeek;
      	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
-    
+
+    /**Sets up a dummy Event object and uses it to open a new EventEditActivity.
+     * @param view the clickable view that triggers this method
+	 * **/
     public void addEventButtonWeeklyOnClick(View view){	//also named with"Daily" because of other similar buttons
     	GregorianCalendar startCal = new GregorianCalendar();
     	startCal.setTime(selectedDate);
@@ -248,6 +292,10 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
     	startActivity(new Intent(WeeklyViewActivity.this, EventEditActivity.class));	//if it is null, and the user hits baack arrow instead of del/save, it's still there
     }
     
+    /**Required method for the option menu in the UI. 
+     * @param menu the menu that goes into the UI element.
+     * @return boolean always returns true
+	 * **/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -256,6 +304,11 @@ public class WeeklyViewActivity extends AppCompatActivity { //ActionBarActivity 
         return true;
     }
 
+    /**Opens the corresponding activity when the option is selected
+     * from the options menu.
+     * @param item the selected item from the options menu
+     * @return boolean value always false (not used)
+	 * **/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

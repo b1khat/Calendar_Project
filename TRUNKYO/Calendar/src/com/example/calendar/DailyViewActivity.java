@@ -22,6 +22,10 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
 	private ArrayList<Button> eventButtonList = new ArrayList<Button>();
 	private Date selectedDate;
 	
+	/**Sets the content view accordingly. Assigns appropriate values to the
+	 * dailyLayout and global variables for future use.
+	 * @param savedInstanceState used for super class constructor call
+	 * **/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,11 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         global = (Globals)getApplicationContext();
     }
     
+    /**Sets up and displays all of the event buttons for the displayed date. Fetches all the 
+     * required events by using EventManager.getEvents(Date,Date) method and sets up the layout parameters
+     * for each event button using the global preferences (setupEventButtonFormat method) to retain consistent
+     * look and feel. Also calls methods inside this class to do the rest of the setup for the individual buttons.
+	 * **/
     private void displayEvents(){
     	//possibly utilize clipping? clip_vertical in RelativeLayout api
     	
@@ -52,6 +61,11 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	}
     }
 
+    /**Creates the appropriate layout parameters needed for the event's button to line up 
+     * relatively to the hour markers on the left side of the screen.
+     * @param event the event for which this set of button layout parameters are being found for
+     * @return RelativeLayout.LayoutParams the layout parameters required for the event's button to line up with the vertical axis of daily UI
+	 * **/
     private RelativeLayout.LayoutParams getEventButtonParams(Event event){
     	RelativeLayout.LayoutParams eventButtonParams = new RelativeLayout.LayoutParams(
 																			RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -128,7 +142,12 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     //can use android:onClick="methodName" instead of OnClickListeners, the method must take only a View
     //use android:minHeight="0dp" to override inherited min values in Buttons?
     //call finish(); somewhere? maybe not. Probably only when going to weekly or monthly view
-    
+
+    /**Makes sure that the event's button will lead to a corresponding editEvent page
+     * when clicked.
+     * @param eventButton the event's button
+     * @param event the event that this button listener and button is for
+	 * **/
     private void setupEventButtonListener(Button eventButton, final Event event){	//eclipse says the parameter has to be final, I don't know why
     	eventButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -139,6 +158,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
 		});
     }
     
+    /**Updates the UI's date TextView to display the correct date. It follows a format using SimpleDateFormat 
+     * from java public libraries. 
+	 * **/
     private void setDisplayedDate(){
     	//can make this an app-wide method (accepting a TextView as argument)
     	TextView currentDateTV = (TextView)findViewById(R.id.theDate);
@@ -151,6 +173,10 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         currentDateTV.setText(theDateText);
     }
 
+    /**Sets the global preferences to reflect that the selected date is now today.
+     * Also calls refshDisplay() method.
+     * @param view the view that triggers this method on click
+	 * **/
     public void todayButtonDailyOnClick(View view){	//named with "Daily" because there may be todayButtons for weekly/monthly
     	Date today = Calendar.getInstance().getTime();	//Causes the default time to be current time if the today button was the last navigation button pressed
     														//not just because we are viewing today
@@ -160,7 +186,11 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     		refreshDisplay();		//Show today's events
     	}
     }
-    
+
+    /**Sets the global preferences to reflect that the previous day is now the selected date.
+     * Calls refreshDisplay() method.
+     * @param view the view that triggers this method upon being clicked
+	 * **/
     public void previousDayButtonOnClick(View view){
     	//System.out.println("in prevDayonclick: " + selectedDate.getYear() + " " + selectedDate.getMonth() + " " + (selectedDate.getDate() - 1));
     	Date previousDay = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate() - 1);
@@ -169,6 +199,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
 
+    /**Sets the global preferences to reflect that the next day is now the selected date.
+	 * Calls refreshDisplay() method.
+	 * **/
     public void nextDayButtonOnClick(View view){
      	Date nextDay = new Date(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDate() + 1);
      	global.setSelectedDate(nextDay);
@@ -176,6 +209,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
      	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
     
+    /**Sets up a dummy Event object and uses it to open a new EventEditActivity.
+     * @param view the clickable view that triggers this method
+	 * **/
     public void addEventButtonDailyOnClick(View view){	//also named with"Daily" because of other similar buttons
     	GregorianCalendar startCal = new GregorianCalendar();
     	startCal.setTime(selectedDate);
@@ -186,6 +222,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	startActivity(new Intent(DailyViewActivity.this, EventEditActivity.class));	//if it is null, and the user hits baack arrow instead of del/save, it's still there
     }
     
+    /**Refreshes the UI to reflect any changes and performs necessary clean up. Removes all eventButtons from the UI and then 
+     * deletes them from the eventButtonList to make way for future use.
+	 * **/
     private void refreshDisplay(){
     	if(!eventButtonList.isEmpty()){		//is this check pointless?
     		for(Button eventButton: eventButtonList){
@@ -197,6 +236,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	displayEvents();	//to show the newly-relevant events and their corresponding buttons
     }
     
+    /**Removes all event buttons from the UI and clears the eventButtonList so that there will be no duplication
+     * of buttons upon this activity being brought back to the foreground.
+	 * **/
     @Override
     protected void onPause(){
     	super.onPause();
@@ -207,7 +249,9 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     		eventButtonList.clear();	//this empties the list so that there are not duplicate buttons upon onResume()
     	}
     }
-    
+   
+    /**Calls setDisplayedDate() and displayEvents() to setup the activity upon resuming.
+	 * **/
     @Override
     public void onResume(){	//onCreate -> onStart -> onResume
     	super.onResume(); //Do we need onWindowFocusChanged to be sure activity is visible?
@@ -217,6 +261,10 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
     	//System.out.println("THIS IS THE eventButtonList length: " + eventButtonList.size()); //DEBUGGING
     }
     
+    /**Required method for the option menu in the UI. 
+     * @param menu the menu that goes into the UI element.
+     * @return boolean always returns true
+	 * **/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -225,6 +273,11 @@ public class DailyViewActivity extends AppCompatActivity { //ActionBarActivity /
         return true;
     }
 
+    /**Opens the corresponding activity when the option is selected
+     * from the options menu.
+     * @param item the selected item from the options menu
+     * @return boolean value always false (not used)
+	 * **/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

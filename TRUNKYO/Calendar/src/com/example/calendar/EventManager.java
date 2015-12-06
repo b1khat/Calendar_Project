@@ -16,6 +16,10 @@ public class EventManager{			//does this need to be all static?
 	private static ArrayList<Event> eventList = new ArrayList<Event>();
 	private static ArrayList<Category> categoryList =  new ArrayList<Category>();	//collection?
 
+	/**Adds an event object into the eventList for future reference. *The events are inserted in order, but this does not matter with
+	 * current implementation.
+	 * @param newEvent the Event object to be inserted
+	 **/
 	public static void addEvent(Event newEvent){
 		//need to check for uniqueness? ->Repeating events?
 
@@ -49,6 +53,9 @@ public class EventManager{			//does this need to be all static?
 		}
 	}
 
+	/**Removes an event object from the eventList.
+	 ** @param delEvent the Event object to be removed from the list
+	 **/
 	public static void removeEvent(Event delEvent){ //Event to be deleted
 		//probably best to change it to just the name for faster searching (problematic in case of repeated events)
 		//unless it goes by memory address
@@ -60,7 +67,9 @@ public class EventManager{			//does this need to be all static?
 		eventList.remove(delEvent);
 	}
 
-	//Delete all instances of a repeating event.
+	/**UNUSED METHOD - Delete all instances of a repeating event.
+	 * @param delEvent event to use in deletion of all corresponding weekly events
+	 **/
 	public static void removeAllInstancesOfEvent(Event delEvent){
 		/**Traverse the list, deleting any event that matches @Param's attributes (except for start/end time ? see comment in removeEvent)
 		 	Look into  removeAll(Collection<?> c)
@@ -70,10 +79,16 @@ public class EventManager{			//does this need to be all static?
 
 	}
 
+	/**Adds an Category object into the categoryList for future reference. 
+	 * @param newCategory the Category object to be inserted
+	 **/
 	public static void addCategory(Category newCategory){
 		categoryList.add(newCategory);
 	}
 
+	/**Removes a Category object from the categoryList.
+	 ** @param category the Category object to be removed from the list
+	 **/
 	public static void removeCategory(Category category){
 
 		//check for events in this category still existing, prompt change
@@ -92,10 +107,19 @@ public class EventManager{			//does this need to be all static?
 		 categoryList.remove(category);
 	}
 
+	/**Fetches the ArrayList containing all stored Event objects.
+	 * @return ArrayList of Events containing all events
+	 **/
 	public static ArrayList<Event> getEvents(){	//PROBABLY ONLY FOR TESTING/DEBUGGING
 		return eventList;//agenda view
 	}
 
+	/**Fetches the ArrayList containing all stored Event objects that occur with the time period
+	 * between the two params.
+	 * @param startPeriod Date object representing the beginning of the period to look in
+	 * @param endPeriod Date object representing the ending of the period to look in
+	 * @return ArrayList of Events containing all stored events that occur between startPeriod and endPeriod
+	 **/
 	public static ArrayList<Event> getEvents(Date startPeriod, Date endPeriod){
 		ArrayList<Event> eventsInPeriod = new ArrayList<Event>();
 
@@ -116,6 +140,9 @@ public class EventManager{			//does this need to be all static?
 		return eventsInPeriod;
 	}
 	
+	/**Fetches the CategoryList containing all stored Category objects.
+	 * @return ArrayList of Category objects containing all stored categories
+	 **/
 	public static ArrayList<Category> getCategories(){
 		return categoryList;
 	}

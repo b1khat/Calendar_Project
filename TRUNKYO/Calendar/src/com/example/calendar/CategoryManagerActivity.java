@@ -26,6 +26,9 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 	
 	private Category selectedCategory;
 	
+	/**Sets the content view accordingly and setups the activity to be managed in the future.
+	 * @param savedInstanceState 
+	 * **/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +39,9 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		setupEditTexts();
 	}
 	
+	/**Finds all the required views by their resource IDs and then assigns them
+	 * to their corresponding variables for future use.
+	 * **/
 	private void attachViewsById(){
 		categorySpinner = (Spinner)findViewById(R.id.spinnerCategories);
 
@@ -45,6 +51,9 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		blueEditText = (EditText)findViewById(R.id.editTextBlue);
 	}
 	
+	/**Sets up the category spinner to display the current list of categories in a
+	 * spinner GUI element for easy access by the user.
+	 * **/
 	private void setupCategorySpinner(){
 		ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item); //, arrayOfData
 		adapter.addAll(EventManager.getCategories());
@@ -57,6 +66,9 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		System.out.println("I set up category spinner");
 	}
 	
+	/**Sets the text fields inside of all of the EditText views in this activity.
+	 * Fetches color value from the currently viewed category.
+	 * **/
 	private void setupEditTexts(){
 		nameEditText.setText(selectedCategory.getName());
 		
@@ -65,6 +77,12 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		blueEditText.setText("" + 	Color.blue(selectedCategory.getColor()));
 	}
 	
+	/**Method that activates when the Save Changes button is clicked.
+	 * It fetches the needed information from the EditText views and uses them to
+	 * update the corresponding category accordingly. *Does not allow user to assign
+	 * null/empty strings or invalid colors to category.
+	 * @param v the clickable view that triggers this method
+	 * **/
 	public void saveChangeOnClick(View v){
 		String newName = nameEditText.getText().toString();
 		if(newName == null || newName.isEmpty()){
@@ -86,6 +104,14 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
  		setupEditTexts();
 	}
 	
+	/**Method that activates when the Save As New Category button is clicked.
+	 * It fetches needed info from the EditText views and uses it to create the new
+	 * category object. Also calls the EventManager to add the category into the list 
+	 * to maintain data integrity across the application. *Does not allow user to assign null/empty
+	 * strings or invalid colors to category. **Does not allow creation of a new category
+	 * with the same name as any stored category.
+	 * @param v the clickable view that triggers this method
+	 * **/
 	public void addCategoryOnClick(View v){
 
 		String newName = nameEditText.getText().toString();
@@ -113,7 +139,12 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		setupCategorySpinner();
 		setupEditTexts();
 	}
-	
+
+	/**Method that activates when the Delete Category button is clicked.
+	 * Removes the currenty displayed category from storage so long as there
+	 * are no events currently stored that belong to this category.
+	 * @param v the clickable view that triggers this method
+	 * **/
 	public void deleteCategoryOnClick(View v){
 		//if no events are in category, 
 			//if category is not default category (or EventManager.getCategories.size()!=1, then delete it
@@ -135,6 +166,9 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		setupEditTexts(); //because selectedCategory must change after the preceding one is deleted
 	}
 
+	/**Checks the validity of the current color input from EditText fields.
+	 * @return boolean value True if none of the color EditText views are empty (null/empty strings)
+	 * **/
 	private boolean currentColorIsValid(){
 		String redStr = redEditText.getText().toString();
 		String greenStr = greenEditText.getText().toString();
@@ -147,13 +181,23 @@ public class CategoryManagerActivity extends Activity implements OnItemSelectedL
 		}
 		return true;
 	}
-	
+
+	/**Detects when a new category is selected from the category spinner.
+	 * Calls the setupEditTexts method to update UI for the newly displayed category.
+	 * @param parent unused
+	 * @param view the view GUI element that triggers this method upon click
+	 * @param position unused
+	 * @param id unused
+	 * **/
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		selectedCategory = (Category)categorySpinner.getSelectedItem();		//Update the selected category
 		setupEditTexts();											//then change the rgb edittexts, so they correspond to the newly selected category.
 	}
 
+	/**EMPTY METHOD - NEVER USED
+	 * @param parent
+	 * **/
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		

@@ -1,5 +1,4 @@
 /**
- * 
  * The methods setupTutorialButtons(), setupNavigationButton(), and setupTestFixture() are not
  * utilized in the final working version of this calendar application.
  * */
@@ -33,6 +32,10 @@ public class MainActivity extends ActionBarActivity {
 	
 	private Globals global;
 	
+	/**Sets up the activity for immediate use; sets content view, but this activity is intentionally never displayed.
+	 * Sets the app's selected date to the current date and time.
+	 * @param savedInstanceState used for overridden method call
+	 * **/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,8 @@ public class MainActivity extends ActionBarActivity {
         //setupNavigationButton();
     }
 
+    /**Handles all of the File I/O for saving categories and events.
+	 * **/
     @Override
     protected void onResume(){
     	super.onResume();
@@ -186,6 +191,8 @@ public class MainActivity extends ActionBarActivity {
     	}
     } 
     
+    /**UNUSED METHOD - Not used in final application version.
+	 * **/
     private void setupTutorialButtons(){
         counter = 0;
         add = (Button) findViewById(R.id.buttonAdd);	//Button is subclass of TextView
@@ -205,6 +212,8 @@ public class MainActivity extends ActionBarActivity {
         });
     }
     
+    /**UNUSED METHOD - Not used in final application version.
+	 * **/
     private void setupNavigationButton(){
     	Button toDailyView = (Button) findViewById(R.id.buttonToDailyView);
     	toDailyView.setOnClickListener(new View.OnClickListener(){
@@ -216,6 +225,8 @@ public class MainActivity extends ActionBarActivity {
     	});
     }
     
+    /**UNUSED METHOD - Not used in final application version.
+	 * **/
     private void setupTestFixture(){
     	Category defaultCat = new Category("Default Category");
     	Category cat1 = new Category("Category juan", 0x12345679);
@@ -229,6 +240,8 @@ public class MainActivity extends ActionBarActivity {
     //	defaultCat.setColor(0x99420690);
     }
 
+    /**UNUSED METHOD - Not used in final application version.
+	 * **/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -237,6 +250,8 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /**UNUSED METHOD - Not used in final application version.
+	 * **/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

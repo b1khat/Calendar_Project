@@ -29,7 +29,10 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
 					endOfMonth;
 	Calendar dummyCalendar = Calendar.getInstance();
 	
-	
+	/**Sets the content view accordingly. Assigns appropriate values to the
+	 * monthlyLayout and global variables for future use.
+	 * @param savedInstanceState used for super class constructor call
+	 * **/	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,8 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
         global.setSelectedDate(Calendar.getInstance().getTime());	//set selectedDate to today's date
     }
     
-
+    /**Calls setDisplayedMonth() and displayEvents() to setup the activity upon resuming.
+	 * **/
     @Override
     public void onResume(){	//onCreate -> onStart -> onResume
     	super.onResume();
@@ -52,13 +56,15 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	displayEvents();
     }
     
-    //PROBABLY NEEDED FOR LISTENER SOLUTION
+    /**UNUSED - empty method**/
     @Override
     protected void onPause(){
     	super.onPause();
-    	//For stopping pointers
     }
 
+    /**Updates the UI's month TextView to display the correct month. It follows a format using SimpleDateFormat 
+     * from java public libraries. 
+	 * **/
     private void setDisplayedMonth(){
     	TextView currentMonthTV = (TextView)findViewById(R.id.theMonth);
 
@@ -73,6 +79,11 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
         currentMonthTV.setText(theMonthText);
     }
 
+    /**Sets up and displays all of the event buttons for the displayed date. Fetches all the 
+     * required events by using EventManager.getEvents(Date,Date) method.
+     * Also calls methods inside this class to do the rest of the setup for the individual buttons.
+     * Also colors in the cells for the monthly view's grid.
+	 * **/
     private void displayEvents(){
     	//Initialize dummyDates for traversing the cells in monthly view
     	dummyCalendar.setTime(startOfMonth);
@@ -124,7 +135,8 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	}
     }
 
-    
+    /**Refreshes the UI to reflect any changes.
+	 * **/
     private void refreshDisplay(){
     	
     //		for(Button eventButton: eventButtonList){
@@ -135,7 +147,8 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	setDisplayedMonth();	//because the selected week has changed
     	displayEvents();	//to show the newly-relevant events and their corresponding buttons
     }
-    
+
+    /**UNUSED - not used in final version**/
     /*Do not use this listener yet, it is broken. Needs a solution to misleading pointer. Currently, it will lead user to daily view displaying the first day
      * that comes right after the last day displayed in this monthly view. This is a result of the dummyDate being left at that date and the listener still 
      * pointing to it.
@@ -156,6 +169,10 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
 		});
     }
     
+    /**Sets the global preferences to reflect that the selected date is now today.
+     * Also calls refshDisplay() method.
+     * @param view the view that triggers this method on click
+	 * **/
     public void todayButtonMonthlyOnClick(View view){	//named with "Monthly" because there are todayButtons for weekly/monthly
     	Date today = Calendar.getInstance().getTime();	
     	//Implement? -> IF the view is already displaying this month, then take no action
@@ -165,6 +182,10 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	
     }
     
+    /**Sets the global preferences to reflect that the date one month before the previously selected date is now the selected date.
+     * Calls refreshDisplay() method.
+     * @param view the view that triggers this method upon being clicked
+	 * **/
     public void previousMonthButtonOnClick(View view){
     	Date previousMonth = new Date(selectedDate.getYear(), selectedDate.getMonth()-1, 15);	//cannot use getDate because if selectedDate was day 31 it would cause
     																							//the displayedMonth to be the same (via overflow in 30-day month)
@@ -173,13 +194,20 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
 
+    /**Sets the global preferences to reflect that the date a month ahead of the previously selected date is now the selected date.
+     * Calls refreshDisplay() method.
+     * @param view the view that triggers this method upon being clicked
+	 * **/
     public void nextMonthButtonOnClick(View view){
      	Date nextMonth = new Date(selectedDate.getYear(), selectedDate.getMonth()+1, 15);
      	global.setSelectedDate(nextMonth);
      	selectedDate = nextMonth;
      	refreshDisplay();	//Replace the eventButtons with new ones for the date now being viewed
     }
-    
+   
+    /**Sets up a dummy Event object and uses it to open a new EventEditActivity.
+     * @param view the clickable view that triggers this method
+	 * **/
     public void addEventButtonMonthlyOnClick(View view){	//also named with"Weekly" because of other similar buttons
     	GregorianCalendar startCal = new GregorianCalendar();
     	startCal.setTime(selectedDate);
@@ -189,6 +217,10 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
     	startActivity(new Intent(MonthlyViewActivity.this, EventEditActivity.class));	//if it is null, and the user hits back arrow instead of delete/save, it's still there
     }
     
+    /**Required method for the option menu in the UI. 
+     * @param menu the menu that goes into the UI element.
+     * @return boolean always returns true
+	 * **/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -197,6 +229,11 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
         return true;
     }
 
+    /**Opens the corresponding activity when the option is selected
+     * from the options menu.
+     * @param item the selected item from the options menu
+     * @return boolean value always false (not used)
+	 * **/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch(item.getItemId()){
@@ -216,7 +253,7 @@ public class MonthlyViewActivity extends AppCompatActivity { //ActionBarActivity
         return false;
     }
    
-
+    /**UNUSED - not used in final version**/
     private void setupTestFixture(){
     	
     	Category defaultCat = new Category("Default Category");

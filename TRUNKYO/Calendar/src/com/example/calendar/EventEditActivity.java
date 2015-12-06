@@ -37,6 +37,11 @@ public class EventEditActivity extends Activity {
 	
 	private SimpleDateFormat shortForm = new SimpleDateFormat("d E MMM y\nhh:mm a");  //format date as Day# Weekday(abbreviated) Month(abbrev.) YYYY
 																					//then \n Hour:Minute AM/PM
+	/**Setes the content view accordingly and fetches values for
+	 * variables global and and displayedEvent. Also calls in-class methods
+	 * for setting up the dynamic UI elements.
+	 * @param savedInstanceState used for super class constructor call
+	 * **/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +55,8 @@ public class EventEditActivity extends Activity {
 		setupPickers();
 	}
 	
+	/**Sets up every TextView in the activity using info from the displayed event.
+	 * **/
 	private void setupTextViews(){
 		nameField = (EditText)findViewById(R.id.editTextEventName);
 		nameField.setText(displayedEvent.getName());
@@ -69,6 +76,8 @@ public class EventEditActivity extends Activity {
         weeklyRepetitionField = (EditText)findViewById(R.id.editTextWeeklyRepetition);
 	}
 	
+	/**Sets up the Spinner UI element used for selecting categories. 
+	 * **/
 	private void setupCategorySpinner(){
 		categorySpinner = (Spinner)findViewById(R.id.spinnerEventCategory);
 		ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item); //, arrayOfData
@@ -77,6 +86,9 @@ public class EventEditActivity extends Activity {
 		categorySpinner.setSelection(adapter.getPosition(displayedEvent.getCategory())); 
 	}
 	
+	/**Sets up time and date pickers for the start and end times for the event.
+	 * Initializes them with information from the displayed event.
+	 * **/
 	private void setupPickers(){
 		//Initialize Pickers to the event's start date and time
 		Date startTime = displayedEvent.getStartTime();
@@ -99,6 +111,11 @@ public class EventEditActivity extends Activity {
 		endTimeField.setMinute(endTime.getMinutes());		
 	}
 	
+	/**If the current input information is valid, it is all used to update the displayed event's
+	 * data. If the weekly option is selected, the new events are created here and added to the EventManager's
+	 * eventList. This method also calls finish() to return to the previous activity.
+	 * @param view the clickable view that triggers this method
+	 * **/
 	public void saveChanges(View view){
 		//Implement safety checks (if there is a conflict, send a long toast
 			
@@ -133,9 +150,8 @@ public class EventEditActivity extends Activity {
 		finish();
 	}
 
-	/**
-	 * OnClick method for the Delete Event button
-	 * 
+	/**OnClick method for the Delete Event button. Removes the displayed event from the EventManager's list.
+	 * @param view the view that triggers this method
 	 **/
 	public void deleteEvent(View view){
 		//if(event.isWeekly())
@@ -144,6 +160,10 @@ public class EventEditActivity extends Activity {
 		finish();
 	}
 	
+	/**Checks all currently input information from UI elements for veracity. If they cause any issue at all 
+	 * (null pointers, weekly event collisions, etc.), then the information is not valid.
+	 * @return boolean value: True if the information is valid, false otherwise.
+	 * **/
 	private boolean currentInfoIsValid(){
 		//check for null/empty string name field
 		//make sure event starts before it ends LOL can be done by setting min/max for the pickers
