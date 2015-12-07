@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item
+        android:id="@+id/menu_option_category_manager"
+        android:title="Category Manager" />
+    <item
+        android:id="@+id/menu_option_monthly_view"
+        android:title="Monthly View" />
+    <item
+        android:id="@+id/menu_option_weekly_view"
+        android:title="Weekly View" />
+    <item
+        android:id="@+id/menu_option_daily_view"
+        android:title="Daily View" />
+
+</menu>

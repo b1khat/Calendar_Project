@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/lastMonthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="last"
+			android:layout_gravity="center"
+            android:gravity="end"
+            android:layout_weight ="1" />
+
+        <TextView
+            android:id="@+id/thisMonthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+			android:gravity="center"
+			android:layout_gravity="center"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/nextMonthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="next"
+			android:gravity="start"
+			android:layout_gravity="center"
+            android:layout_weight = "1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/weekName"
+            android:text="Sun" />
+        
+        <TextView
+            style="@style/weekName"
+            android:text="Mon" />
+
+        <TextView
+            style="@style/weekName"
+            android:text="Tue" />
+
+        <TextView
+            style="@style/weekName"
+            android:text="Wed" />
+
+        <TextView
+            style="@style/weekName"
+            android:text="Thur" />
+
+        <TextView
+            style="@style/weekName"
+            android:text="Fri" />
+
+        <TextView
+            style="@style/weekName"
+            android:text="Sat" />
+
+
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/monthlyGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#00000000"
+        android:clickable="true"
+        android:clipChildren="true"
+        android:columnWidth="55.0dip"
+        android:horizontalSpacing="1.0dip"
+        android:listSelector="@null"
+        android:numColumns="7"
+        android:paddingBottom="1.0dip"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1.0dip" />
+
+</LinearLayout>
+<!-- From: file:/Users/Shadow/Developer/Android/CalendarD/app/src/main/res/layout/monthly_view.xml -->

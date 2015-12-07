@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Shadow/Developer/Android/CalendarD/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/Users/Shadow/Developer/Android/CalendarD/app/build/intermediates/pre-dexed/debug/classes-0524944504ac20b61733ed288a2b6687dc31652c.jar" />
+    </item>
+    <item
+        jar="/Users/Shadow/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/Users/Shadow/Developer/Android/CalendarD/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-ed1c52a69d7b73a36f2da5be8e319053fdfcd4d5.jar" />
+    </item>
+    <item
+        jar="/Users/Shadow/Developer/Android/CalendarD/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/Users/Shadow/Developer/Android/CalendarD/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-6581c4c09f3548f15da7a6a67ee8f6198af209bd.jar" />
+    </item>
+
+</items>

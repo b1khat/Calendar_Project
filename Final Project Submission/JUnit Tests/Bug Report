@@ -1,0 +1,11 @@
+Bug Report:
+Over the course of the entire project, we did face a few bugs. While we still didn’t complete the entire project we tested every piece we added to make sure that it runs properly and so that at the end we do not have thousands of lines of code to evaluate and test run to find bugs. By the time we finished implementation phase, we had already fixed a lot of bugs and had to do rigorously testing to identify any bugs we still had in the project. Following are the few bugs which we found in the project:
+
+1. The inConflict method did not return true when the event starting and end time were both start at the same time or end at the same time. So the argument that the function took was an Event. While we were testing different possibilities of adding or editing an event, we put same time for start and end time and found that the function still accepted it. To rectify this small bug, we added an if statement in the inConflict method where we checked for the start and end time; if not same then return false and if same then return true. So this fixed this bug.
+
+2. Colour variable needed to be an integer rather than a built in colour object because android uses a hexadecimal integer for colors rather than a colour AWT object. To fix this bug, we simply just changed the colour object to the RGB hexadecimal integer.
+Additionally the set and get colour functions in the Category class had to be changed to returning and accepting the Interger rather than a Colour AWT object. We forgot about changing this and were facing an error in the code – stuck on this for a while but we figured out that we just needed to change the return type and parameter data type.
+
+3. Null Pointer check for the get and set functions – needed to check whether the arguments and/or the parameters are null; if it was a string then check whether the string was a null string. This was to avoid the null pointer exceptions. We did face a null pointer exception due to this same reason so we had the null pointer check for the set and get functions.
+
+4. Another bug we found was that the category.equals method was named this.name == othercategory.name. However this didn’t work so we had to change it to this.name.equals and not use the == sign.

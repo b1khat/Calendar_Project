@@ -1,0 +1,11 @@
+For Mobile (Android) Devices:
+Turn on USB debugging in your mobile device and connect your device to the PC or laptop
+
+For Laptop or PC:
+Download the Android Emulator on your laptop or PC
+Install Eclipse with the Android SDK
+Then open the Calendar project in Eclipse
+Click the Clean Button in the project drop-down menu to Clean Compile the program
+Start your emulator and right click on the Calendar file in the package explorer
+Hit the Run as -> Android Application Button
+Ola! You should have the calendar screen

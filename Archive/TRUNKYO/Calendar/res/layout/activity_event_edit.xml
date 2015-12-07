@@ -1,0 +1,218 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    tools:context="com.example.calendar.EventEditActivity" >
+    
+
+	<TextView 
+	    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Event Details"
+		android:textSize="25sp"
+		android:gravity="center"
+		android:background="@color/headerBackground" />
+    
+ 	<ScrollView
+ 	    android:layout_width="match_parent"
+ 	    android:layout_height="wrap_content" >
+ 	    
+ 	    <LinearLayout
+ 	    	android:layout_width="match_parent"
+ 	   		android:layout_height="wrap_content" 
+ 	    	android:orientation="vertical">
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Name:"
+		            android:textSize="18sp" />
+		
+		        <EditText
+		            android:id="@+id/editTextEventName"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:ems="10" 
+		            android:gravity="start" />
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Location:"
+		            android:textSize="18sp" />
+		
+		        <EditText
+		            android:id="@+id/editTextEventLocation"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:ems="10" 
+		            android:gravity="start" />
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Description:"
+		            android:textSize="18sp" />
+		
+		        <EditText
+		            android:id="@+id/editTextEventDescription"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:ems="10" 
+		            android:gravity="start" />
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Category:"
+		            android:textSize="18sp" />
+		
+		        <Spinner
+		            android:id="@+id/spinnerEventCategory"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:ems="10" 
+		            android:gravity="start" />
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Start Date:"
+		            android:textSize="18sp" />
+		
+		        <TextView
+		            android:id="@+id/textViewEventStartDate"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:textSize="18sp" 
+		            android:gravity="end" />
+		        
+		    </LinearLayout>
+		    
+		    <RelativeLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content">
+			    <DatePicker
+			        android:id="@+id/datePickerStartDate"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:datePickerMode="spinner"
+			        android:calendarViewShown="false"
+			        android:layout_gravity="center"/>
+			     <TimePicker
+			        android:id="@+id/timePickerStartTime"
+			        android:layout_below="@id/datePickerStartDate"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:timePickerMode="spinner" />
+		    </RelativeLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="End Date:"
+		            android:textSize="18sp" />
+		
+		        <TextView
+		            android:id="@+id/textViewEventEndDate"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:textSize="18sp" 
+		            android:gravity="end" />
+		    </LinearLayout>		     
+		    
+		    <RelativeLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content">
+			    <DatePicker
+			        android:id="@+id/datePickerEndDate"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:datePickerMode="spinner"
+			        android:calendarViewShown="false"
+			        android:layout_gravity="center"/>
+			     <TimePicker
+			        android:id="@+id/timePickerEndTime"
+			        android:layout_below="@id/datePickerEndDate"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:timePickerMode="spinner" />
+		    </RelativeLayout>
+		    
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Repeat for this many weeks:"
+		            android:textSize="18sp"
+		            android:gravity="start" />
+		        <EditText
+		            android:id="@+id/editTextWeeklyRepetition" 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="0"
+		            android:textSize="18sp"
+		            android:gravity="end"
+		            android:inputType="number" />
+		    		     
+			     
+		    <Button
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="18sp"
+		        android:text="Save Changes"
+		        android:gravity="center"
+		        android:layout_gravity="center" 
+		        android:onClick="saveChanges" />
+		    <Button
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="18sp"
+		        android:text="Delete Event"
+		        android:gravity="center"
+		        android:layout_gravity="center" 
+		        android:onClick="deleteEvent" />
+	    </LinearLayout>
+	</ScrollView>
+</LinearLayout>

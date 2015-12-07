@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+	    android:id="@+id/topBannerMonthlyLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    android:layout_alignParentTop="true"
+	    android:background="@color/borderColor1">
+        
+	   <TextView
+	        android:id="@+id/theMonth"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="start"
+	        android:gravity="center"
+	        android:text="MONTH YEAR GOES HERE"
+	        android:textSize="25sp" />
+	
+	    <Button
+	        android:id="@+id/addEventButtonMonthly"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_gravity="end"
+	        android:gravity="center"
+	        android:padding="0dp"
+	        android:text="Add Event"
+	        android:textSize="12sp"
+			android:onClick="addEventButtonMonthlyOnClick"/>
+        
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/dayNavigationBarMonthlyLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/borderColor1">
+		    
+			<Button
+		        android:id="@+id/todayButtonMonthly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="center"
+		        android:layout_centerHorizontal="true"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="TODAY"
+		        android:textSize="15sp"
+		        android:onClick="todayButtonMonthlyOnClick" />
+			<Button
+		        android:id="@+id/previousMonthButton"
+		        android:layout_toLeftOf="@id/todayButtonMonthly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Prev. Month"
+		        android:textSize="15sp"
+		        android:onClick="previousMonthButtonOnClick" />
+			<Button
+		        android:id="@+id/nextMonthButton"
+		        android:layout_toRightOf="@id/todayButtonMonthly"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="end"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Next Month"
+		        android:textSize="15sp"
+		        android:onClick="nextMonthButtonOnClick" />
+    </RelativeLayout>
+    
+    <TableLayout
+        android:id="@+id/tableLayoutMonthly"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" 
+       	android:layout_above="@id/dayNavigationBarMonthlyLayout"
+      	android:layout_below="@id/topBannerMonthlyLayout"
+	    android:background="@color/borderColor1"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*">
+        	<TableRow>		
+        			<TextView
+				        android:id="@+id/dayW1"
+	  	        		
+	  	        		android:gravity="center"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="SUN"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW2"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		
+	  	        		android:gravity="center"
+				        android:text="MON"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW3"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		
+	  	        		android:gravity="center"
+				        android:text="TUE"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW4"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		
+	  	        		android:gravity="center"
+				        android:text="WED"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW5"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		
+	  	        		android:gravity="center"
+				        android:text="THU"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW6"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		
+	  	        		android:gravity="center"
+				        android:text="FRI"
+				        android:textSize="12sp" />
+				    <TextView
+				        android:id="@+id/dayW7"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+	  	        		android:gravity="center"
+				        android:text="SAT"
+				        android:textSize="12sp" /> 
+		</TableRow>
+		
+		<TableRow 
+	        android:id="@+id/week1"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />	        
+	    </TableRow>
+	    <TableRow 
+	        android:id="@+id/week2"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+		        <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp"/>
+		        <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	    </TableRow>
+	        <TableRow 
+	        android:id="@+id/week3"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	    </TableRow>
+	        <TableRow 
+	        android:id="@+id/week4"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+	   			<Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	   			<Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />     
+	    </TableRow>
+	        <TableRow 
+	        android:id="@+id/week5"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+				<Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+				<Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />        
+	    </TableRow>
+	    <TableRow 
+	        android:id="@+id/week6"
+	        android:layout_weight="1"
+	        android:layout_height="0dp">
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />
+	            <Button
+		            android:layout_width="0dp"
+		            android:layout_weight="1"
+					android:layout_height="match_parent"
+			     	style="?android:attr/borderlessButtonStyle"
+			     	android:gravity="center"
+				    android:text="SATadslf;asdljfa;dslfj"
+				    android:textSize="12sp" />	        
+	    </TableRow>
+	        		    
+    </TableLayout>
+   
+</RelativeLayout>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+	    android:id="@+id/topBannerDailyLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    android:layout_alignParentTop="true"
+	    android:background="@color/borderColor1">
+        
+	   <TextView
+	        android:id="@+id/theDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="start"
+	        android:gravity="center"
+	        android:text="23 Fri Oct 2015"
+	        android:textSize="25sp" />
+	
+	    <Button
+	        android:id="@+id/addEventButtonDaily"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_gravity="end"
+	        android:gravity="center"
+	        android:padding="0dp"
+	        android:text="Add Event"
+	        android:textSize="10sp"
+			android:onClick="addEventButtonDailyOnClick"/>
+        
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/dayNavigationBarDailyLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/borderColor1">
+		    
+			<Button
+		        android:id="@+id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="center"
+		        android:layout_centerHorizontal="true"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="TODAY"
+		        android:textSize="15sp"
+		        android:onClick="todayButtonDailyOnClick" />
+			<Button
+		        android:id="@+id/previousDayButton"
+		        android:layout_toLeftOf="@id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Prev. Day"
+		        android:textSize="15sp"
+		        android:onClick="previousDayButtonOnClick" />
+			<Button
+		        android:id="@+id/nextDayButton"
+		        android:layout_toRightOf="@id/todayButtonDaily"
+		        android:layout_width="wrap_content"
+		        android:layout_height="25dp"
+		        android:layout_gravity="end"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:text="Next Day"
+		        android:textSize="15sp"
+		        android:onClick="nextDayButtonOnClick" />
+    </RelativeLayout>
+   
+    <ScrollView android:id="@+id/dailyScrollView"
+        		android:layout_above="@+id/dayNavigationBarDailyLayout"
+        		android:layout_below="@+id/topBannerDailyLayout"
+        		android:layout_width="match_parent" 
+        		android:layout_height="wrap_content">
+
+		<RelativeLayout
+          	android:layout_width="match_parent"
+          	android:layout_height="wrap_content"
+          	android:id="@+id/ScrollingLayout" 
+          	android:padding="0px">
+
+		    <TextView
+		        android:id="@+id/hour1"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="1AM"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour2"
+		        android:layout_below="@id/hour1"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="2"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour3"
+		        android:layout_below="@id/hour2"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="3"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour4"
+		        android:layout_below="@id/hour3"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="4"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour5"
+		        android:layout_below="@id/hour4"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="5"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour6"
+		        android:layout_below="@id/hour5"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="6"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour7"
+		        android:layout_below="@id/hour6"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="7"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour8"
+		        android:layout_below="@id/hour7"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="8"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour9"
+		        android:layout_below="@id/hour8"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="9"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour10"
+		        android:layout_below="@id/hour9"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="10"
+		        android:textSize="12sp" />  
+		    <TextView
+		        android:id="@+id/hour11"
+		        android:layout_below="@id/hour10"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="11"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour12"
+		        android:layout_below="@id/hour11"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="12"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour13"
+		        android:layout_below="@id/hour12"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="1PM"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour14"
+		        android:layout_below="@id/hour13"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="2"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour15"
+		        android:layout_below="@id/hour14"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="3"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour16"
+		        android:layout_below="@id/hour15"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="4"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour17"
+		        android:layout_below="@id/hour16"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="5"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour18"
+		        android:layout_below="@id/hour17"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="6"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour19"
+		        android:layout_below="@id/hour18"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="7"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour20"
+		        android:layout_below="@id/hour19"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="8"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour21"
+		        android:layout_below="@id/hour20"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="9"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour22"
+		        android:layout_below="@id/hour21"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="10"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/hour23"
+		        android:layout_below="@id/hour22"
+		        android:layout_width="25dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="start"
+		        android:gravity="center"
+		        android:text="11"
+		        android:textSize="12sp" />
+		</RelativeLayout>  
+	</ScrollView>
+
+
+
+</RelativeLayout>
