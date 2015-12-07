@@ -16,9 +16,9 @@ https://github.com/qizt/Calendar_Project
 	The user manual is in "User Manual for Calendar" and may be opened
 	using Notepad or most text editors.
 
-===CONTRIBUTIONS===
+===MAIN CONTRIBUTIONS===
 nxr131730 - 
 zxq150130 -
-ujc130030 - 
+ujc130030 - Programming the application.
 xxt150630 - 
 bxk150330 -
