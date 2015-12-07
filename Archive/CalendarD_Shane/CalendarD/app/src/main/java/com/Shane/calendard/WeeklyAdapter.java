@@ -18,30 +18,35 @@ public class WeeklyAdapter extends BaseAdapter{
 		private Resources res;
 		private int weekday;
 		
-	public WeeklyAdapter(Context context,	Resources rs,  int weekday){
+	public WeeklyAdapter(Context context,	Resources rs,  int weekday)
+	{
 		this.context = context;
 		this.res = rs;
 		this.weekday = weekday;
 	}
 
 	@Override
-	public int getCount() {
+	public int getCount()
+	{
 		return 12*8;
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Object getItem(int position)
+	{
 		return position;
 	}
 
 	@Override
-	public long getItemId(int position) {
+	public long getItemId(int position)
+	{
 		return position;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		if(convertView == null){
+		if(convertView == null)
+		{
 			convertView = LayoutInflater.from(context).
 					inflate(R.layout.item, null);
 		 }

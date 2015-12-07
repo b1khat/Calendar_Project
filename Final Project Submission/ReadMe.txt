@@ -22,4 +22,4 @@ nxr131730 - Requirement Engineering, Design, Documentation and Reports
 zxq150130 -
 ujc130030 - Programming the application.
 xxt150630 - 
-bxk150330 -
+bxk150330 - Requirement Engineering, Presentation, implementation and user manuals.
