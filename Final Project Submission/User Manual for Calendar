@@ -1,0 +1,16 @@
+For Mobile (Android) Devices:
+Turn on USB debugging in your mobile device and connect your device to the PC or laptop( how you upload in your mobile device)
+Go to your calendar app and run it. 
+choose the device that is just connected it. click ok
+automatically it will install app on your mobile and it start running. 
+you can choose monthly view, daily view, category manager from menu icon on the top right corner. 
+Changes made to categories and events will only be saved upon leaving the application using the back/return button. 
+
+For Laptop or PC:
+Download the Android Emulator on your laptop or PC
+Install Eclipse with the Android SDK
+Then open the Calendar project in Eclipse
+Click the Clean Button in the project drop-down menu to Clean Compile the program
+Start your emulator and right click on the Calendar file in the package explorer
+Hit the Run as -> Android Application Button
+Ola! You should have the calendar screen
